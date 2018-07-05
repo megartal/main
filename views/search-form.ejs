@@ -1,0 +1,51 @@
+<form id="hotel-search-form" class="hotel-search-form">
+
+    <label class="field destination white-text">
+        جستجوي شهر
+        <input type="text" name="q" id="q" placeholder="شهر مورد نظر را انتخاب کنيد." value=""  autocomplete="off"/>
+        <div class="autocomplete-suggestions">
+        </div>
+        <button id="clear-search" class="destination-clear hidden" type="button" tabIndex="-1" aria-label="Clear"></button>
+        <div id="empty-destination-box" class="hotel-search-form--error">
+            <div class="text">لطفا شهر مورد نظر را انتخاب کنيد.</div>
+        </div>
+    </label>
+
+    <fieldset class="field dates">
+        <div class="col-sm-6 dateRangePicker">
+            <label class="control-label margin-b-0 white-text" placeholder="تاريخ ورود">تاريخ ورود</label>
+            <input type="text" class="form-control" id="dateRangePicker" autocomplete="off" placeholder="   تاريخ ورود" />
+        </div>
+        <div class="col-sm-6 dateRangePicker">
+            <label class="control-label margin-b-0 white-text">تاريخ خروج</label>
+            <input type="text" class="form-control" id="dateRangePickerEnd" autocomplete="off" placeholder="   تاريخ خروج" />
+        </div>
+    </fieldset>
+
+    <fieldset class="field accommodation">
+        <label class="field guests white-text">
+            تعداد
+            <select id="na" name="na">
+                <option value="1">1</option>
+                <option value="2" selected="selected">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </label>
+        <label class="field rooms">
+            اتاق ها
+            <select id="nr" name="nr">
+                <option value="1" selected="selected">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </label>
+    </fieldset>
+
+    <div class="field submit">
+        <button id="submit-mysearch" type="submit" class="hotel-cta-main-lg">جستجوي هتل ها</button>
+    </div>
+</form>

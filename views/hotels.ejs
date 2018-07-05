@@ -1,0 +1,212 @@
+﻿<!DOCTYPE html>
+<html>
+<%- include header.ejs %>
+
+    <body dir="rtl" id="category-hotels" class="lang-en page-hotelsesi action-hotelsindex   default-layout scaffold-font-size   spring-clean month-view-spring-clean ">
+
+        <noscript>
+            <div class="no-js-msg">
+                <p>
+                    Diringo needs JavaScript to work. It looks like your browser doesn't support JavaScript, or has it turned off. Please try
+                    again with JavaScript support.
+                </p>
+            </div>
+        </noscript>
+        <div id="pagewrap" class="clearfix">
+            <div class="wrap h1-heading">
+                <h1 id="h1-heading">هتل ها | ديرينگو - با استفاده از ديرينگو هتل ها را جستجو و مقايسه کنيد.</h1>
+            </div>
+
+            <%- include navbar.ejs %>
+                <!--  body -->
+
+                <!-- START  -->
+                <div id="-wrap" class="wrap clearfix">
+                    <div id="criteria" class="search_controls search_controls_criteria hotel-criteria hotel_layout springClean ">
+                        <div id="criteria-header" class="hotel-criteria-header clearfix">
+                            <button id="new-search" class="hotel-cta-secondary" data-icon="searchBlue before" type="button">
+                                <span class="hotel-cta-text">Modify</span>
+                            </button>
+
+                            <div class="hotel-criteria-destination">شيراز</div>
+
+                            <div class="hotel-criteria-date" data-icon="calendarSmall before">
+                                <span class="check-in">30 فروردين 1397</span> -
+                                <span class="check-out">5 ارديبهشت 1397</span>
+                            </div>
+
+                            <div class="hotel-criteria-occupancy" data-icon="adult before">
+                                <span class="guests">يک نفر</span>,
+                                <span class="rooms">اتاق يک تخته</span>
+                            </div>
+                        </div>
+                        <div id="search-form-wrapper" class="hotel-search-form-wrapper springClean  ">
+
+                            <%- include search-form.ejs %>
+                        </div>
+                    </div>
+
+                    <div id="results-list-layout" class="hotel-page-wrapper clearfix hotel-prices-complete  displayed-price-total" data-update_status="complete"
+                        data-pivot-lat="32.5459170617" data-pivot-lon="54.3025988814" data-pivot-name="Iran" data-results-count="153"
+                        data-results-available="3" data-update-percent="100" data-last_update="">
+
+                        <div id="results-extra" class="results-extra">
+                            <div id="inline-map" style="background-image: url(//maps.googleapis.com/maps/api/staticmap?size=252x196&amp;maptype=roadmap&amp;sensor=false&amp;language=en-GB&amp;region=UK&amp;scale=2&amp;center=33.81860035%2C52.93125976625&amp;visible=38.020534%2C59.4947395325%7C29.6166667%2C46.36778&amp;markers=scale%3A2%7Csize%3Amid%7Cicon%3Ahttp%3A%2F%2Fwww.skyscanner.net%2Fhotels%2Fstatic%2Fcommon%2Fimg%2Fstatic_map%2Fcity-center.gif%7C32.5459170617%2C54.3025988814&amp;markers=scale%3A2%7Cicon%3Ahttp%3A%2F%2Fwww.skyscanner.net%2Fhotels%2Fstatic%2Fcommon%2Fimg%2Fstatic_map%2Fmap-pin.png%7C35.7096%2C51.4013%7C32.6522%2C51.6683%7C29.6167%2C52.5333%7C32.6512%2C51.6712%7C35.6883%2C51.4197%7C38.0205%2C46.3678%7C32.6423%2C51.6654%7C30.2794%2C57.0221%7C35.7901%2C51.4129%7C35.7907%2C51.4131%7C36.3289%2C59.4947%7C35.731%2C51.4119%7C29.6221%2C52.541%7C35.7154%2C51.3939%7C35.4061%2C51.1552&amp;key=AIzaSyD1HNuACWxQJ296sPgoUreH-QnxGysv5cM&amp;signature=dsaN_-GBVI_hH1MrKvTMLPPJYi4=)"
+                                alt="Show hotels on a map" data-map-trigger="Static Map"></div>
+                            <div id="filter" class="listing">
+
+                                <header class="listing-header">
+                                    <ul>
+                                        <li>
+                                            <h4>فیلتر کردن بر اساس:</h4>
+                                        </li>
+                                        <li>
+                                            <button id="btn-filter-cancel" class="hotel-cta-secondary">لغو</button>
+                                        </li>
+                                        <li>
+                                            <button id="btn-filter-apply" class="hotel-cta-secondary">اعمال</button>
+                                        </li>
+                                    </ul>
+                                    <p class="accommodation-shown">
+                                        Accommodation shown: 3 / 153
+                                        <button id="btn-deselect-all-mobile" class="btn-deselect-all">حذف همه فيلتر ها</button>
+                                    </p>
+                                </header>
+                                <button id="btn-deselect-all-desktop" class="btn-deselect-all">حذف همه فيلتر ها </button>
+
+                                <%- include filters.ejs %>
+                            </div>
+                        </div>
+
+                        <div class="results-list-wrapper">
+                            <div id="progress_top" class="hotel_progress hidden">
+                                <div class="track">
+                                    <p class="bar" style="width: 100%;"></p>
+                                </div>
+                            </div>
+
+                            <div class="sort-and-view-wrapper">
+                                <ol class="sort-and-view">
+                                    <li id="tab_filter" class="tab_item">
+                                        <button class="hotel-cta-secondary" id="btn-filter">فیلترها</button>
+                                    </li>
+
+                                    <li id="tab_sort" class="tab_item">
+                                        <button class="hotel-cta-secondary" id="btn-sort">مرتب سازی</button>
+                                        <div id="sort" class="listing hidden">
+                                            <header class="listing-header">
+                                                <ul>
+                                                    <li>
+                                                        <h4>مرتب سازی بر اساس</h4>
+                                                    </li>
+                                                    <li>
+                                                        <button id="btn-sort-cancel" class="hotel-cta-secondary">Cancel</button>
+                                                    </li>
+                                                    <li>
+                                                        <button id="btn-sort-apply" class="hotel-cta-secondary">Apply</button>
+                                                    </li>
+                                                </ul>
+                                            </header>
+
+                                            <div id="sort-inner" class="listing-inner">
+                                                <ol>
+                                                    <li class="sort-item_popularity selected">
+                                                        <label for="sort-popularity" class="sort-control-label">
+                                                            <input id="sort-popularity" class="sort-control" type="radio" name="sort" value="popularity" checked="checked"> بهترينها
+                                                        </label>
+                                                    </li>
+                                                    <li class="sort-item_price-asc ">
+                                                        <label for="sort-price-asc" class="sort-control-label">
+                                                            <input id="sort-price-asc" class="sort-control" type="radio" name="sort" value="price-asc"> قیمت (کمترین به بیشترین)
+                                                        </label>
+                                                    </li>
+                                                    <li class="sort-item_price-desc ">
+                                                        <label for="sort-price-desc" class="sort-control-label">
+                                                            <input id="sort-price-desc" class="sort-control" type="radio" name="sort" value="price-desc"> قیمت (بیشترین به کمترین)
+                                                        </label>
+                                                    </li>
+                                                    <li class="sort-item_stars-desc ">
+                                                        <label for="sort-stars-desc" class="sort-control-label">
+                                                            <input id="sort-stars-desc" class="sort-control" type="radio" name="sort" value="stars-desc"> ستارهه ها (5 to 1)
+                                                        </label>
+                                                    </li>
+                                                    <li class="sort-item_stars-asc ">
+                                                        <label for="sort-stars-asc" class="sort-control-label">
+                                                            <input id="sort-stars-asc" class="sort-control" type="radio" name="sort" value="stars-asc"> ستاره ها (1 to 5)
+                                                        </label>
+                                                    </li>
+                                                </ol>
+                                            </div>
+                                        </div>
+
+                                        <label id="lbl-hotel-sort" for="hotel-sort">مرتب سازی بر اساس</label>
+                                        <select id="hotel-sort" name="sort">
+                                            <option class="sort-item_popularity" value="popularity" selected="">بهترينها</option>
+                                            <option class="sort-item_price-asc" value="price-asc">قیمت (کمترین به بیشترین)</option>
+                                            <option class="sort-item_price-desc" value="price-desc">قیمت (بیشترین به کمترین)</option>
+                                            <option class="sort-item_stars-desc" value="stars-desc">ستاره (5 تا 1)</option>
+                                            <option class="sort-item_stars-asc" value="stars-asc">ستاره (1 تا 5)</option>
+                                        </select>
+                                    </li>
+
+                                    <li id="tab_map" class="tab_item map map-trigger">
+                                        <button data-icon="view-map before" class="hotel-cta-secondary" id="btn-map">
+                                            <span class="label">Map</span>
+                                        </button>
+                                    </li>
+
+                                </ol>
+                                <p class="search-summary">
+                                    <strong>136</strong> نتيجه مرتب شده بر اساس
+                                    <em>بهترينها</em>
+                                    <span class="search-summary-info"></span>
+                                </p>
+                            </div>
+
+                            <div class="price-description-msg">
+                                <span class="price-per-room-msg" id="price-description-msg-total">
+                                    تمامي قيمت ها براي 5 شب ،يک نفر،اتاق يک تخته
+                                    <a class="price-format-switch" href="javascript:void(0)">
+                                        (نمايش قيمت بر اساس هر اتاق و هر شب محاسبه شده است )
+                                    </a>
+                                </span>
+                                <span class="price-per-room-msg" id="price-description-msg-room-night">
+                                    قيمت هر اتاق به ازاي هر شب براي يک نفر
+                                    <a class="price-format-switch" href="javascript:void(0)">
+                                        (نمايش همه قيمت ها)
+                                    </a>
+                                </span>
+                            </div>
+
+
+                            <div id="results-list" class="results-list">
+
+                                <ol id="results" class="results available">
+                                </ol>
+
+                                <%- include pagination.ejs %>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END  -->
+                <!--  body -->
+                <%- include footer.ejs %>
+
+                    <div class=" legal-info">
+                        <p id="copyright" class="asian-lang-font-reset">
+                            <span> diringo &copy; 2018-2018</span>
+                        </p>
+                    </div>
+
+
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+                    <script src="/Plugins/dateRangePicker/js/moment.min.js"></script>
+                    <script src="/Plugins/dateRangePicker/js/moment-jalaali.js"></script>
+                    <script src="/Plugins/dateRangePicker/js/daterangepicker-fa-ex.js"></script>
+                    <script src="/javascripts/hotels.js"></script>
+        </div>
+    </body>
+
+</html>

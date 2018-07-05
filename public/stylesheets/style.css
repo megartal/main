@@ -1,0 +1,21 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.pdatepicker input[data-v-157d4eff] {
+  text-align: right !important;
+  direction: rtl;
+  width: 158px !important;
+  background-color: #fff;
+  font-family: 'B Yekan', tahoma, Arial;
+  font-weight: 400;
+  color: #3b344b;
+  font-size: 14px;
+  line-height: 20px;
+  width: 100%;
+}
