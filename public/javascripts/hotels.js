@@ -1,50 +1,63 @@
 $(document).ready(function () {
+    setDefultDate();
     datePicker();
 
-    var results;
-
-    $('#q').keyup(function () {
-        $.ajax({
-            url: 'http://localhost:4000/api/city',
-            data: { city: $(this).val() },
-            success: function (data) {
-                $('.autocomplete-suggestions').children().remove();
-                data.forEach(function(element){
-                    $('.autocomplete-suggestions').append('<div class="autocomplete-suggestion" data-index="0"><small><strong>' + element.city + '</strong></small></div>');
+    $.ajax({
+        url: "http://localhost:4000/api/search",
+        type: 'POST',
+        data: { city: param('q'), from: param('from'), to: param('to'), guest: param('na'), rooms: param('nr') },
+        success: function (data) {
+            var template = $('#cartId').html();
+            var dealTemplate = $('#dealId').html();
+            var otaTemplate = $('#OTAId').html();
+            data.forEach(function (element) {
+                var cardhtml = Mustache.render(template, element);
+                var dealHtml = Mustache.render(dealTemplate, element);
+                $('#results').append(cardhtml);
+                hotelId = '#' + element.hotel_id;
+                $(hotelId).append(dealHtml);
+                element.ota_results.forEach(function (ota) {
+                    var otaHtml = Mustache.render(otaTemplate, ota);
+                    $(hotelId + 'ota').append(otaHtml);
                 });
-            }
-        })
+            });
+        }
     });
 
-    $('#submit-mysearch').click(function (e) {
-        search = collectSearchData();
-        $.ajax({
-            url: "http://localhost:4000/api/search",
-            type: 'POST',
-            data: search,
-            success: function (data) {
-                data.forEach(function(element){
-                var s = '<p>salam '+ element.hotel_name +'</p>'
-                $('#results').append(s);
-              }); 
-            }
-        });
+    $('#results').on('click', '.expand_details', function () {
+        $(this).addClass('hidden');
+        $(this).parent().attr('data-icon', 'upBlue before');
+        $(this).siblings().removeClass('hidden');
+        var hotelId = '#' + $(this).parent().attr('data-hotel') + 'deals';
+        $(hotelId).css('display', 'block');
     });
 
-    $('#hotel-search-form').on('mouseenter', '.autocomplete-suggestion', function () {
-        $(this).css("background-color", "#e4e6e8");
-        $(this).css("cursor", "pointer");
+    $('#results').on('click', '.collapse_details', function () {
+        $(this).addClass('hidden');
+        $(this).parent().attr('data-icon', 'downBlue before');
+        $(this).siblings().removeClass('hidden');
+        var hotelId = '#' + $(this).parent().attr('data-hotel') + 'deals';
+        $(hotelId).css('display', 'none');
     });
 
-    $('#hotel-search-form').on('mouseleave', '.autocomplete-suggestion', function () {
-        $(this).css("background-color", "white");
-        $(this).css("cursor", "pointer");
-    });
+    $('#results').on('click', '.cpa-hotel-inline-hide-details', function(){
+        $('.collapse_details').trigger('click');
+    })
 
-    $('#hotel-search-form').on('click', '.autocomplete-suggestion', function () {
-        var city = $(this).text();
-        $('#q').val(city);
-        $('.autocomplete-suggestions').children().remove();
+    $('#results').on('click', '.hotel-inline-tab', function () {
+        $(this).siblings().removeClass('tab-selected');
+        $(this).addClass('tab-selected');
+        var tab = $(this).attr('data-elem');
+        $(this).parent().siblings('.hotel-inline-item').css('display', 'none');
+        if (tab == 'prices')
+            $(this).parent().siblings('.hotel-inline-prices').css('display', 'block');
+        if (tab == 'desc')
+            $(this).parent().siblings('.hotel-inline-desc').css('display', 'block');
+        if (tab == 'location')
+            $(this).parent().siblings('.hotel-inline-location').css('display', 'block');
+        if (tab == 'facilities')
+            $(this).parent().siblings('.hotel-inline-facilities').css('display', 'block');
+
     });
 
     $('#new-search').click(function () {
@@ -53,50 +66,5 @@ $(document).ready(function () {
 
 });
 
-function createResult(element) {
 
-}
-
-function collectSearchData() {
-    var search = {};
-    search.city = $('#q').val();
-    search.from = $('#dateRangePicker').val();
-    search.to = $('#dateRangePickerEnd').val();
-    search.guest = $('#na').val();
-    search.rooms = $('#nr').val();
-    return search;
-}
-
-function datePicker() {
-    var night;
-    var isRtl = true;
-    var dateFormat = isRtl ? 'jYYYY/jMM/jDD' : 'YYYY/MM/DD';
-    var dateFrom = false ? moment("") : undefined;
-    var dateTo = false ? moment("") : undefined;
-    var $dateRanger = $("#dateRangePicker");
-
-    $dateRanger.daterangepicker({
-        clearLabel: 'Clear',
-        autoUpdateInput: !!(dateFrom && dateTo),
-        minDate: moment(),
-        autoApply: true,
-        opens: isRtl ? 'left' : 'right',
-        locale: {
-            separator: ' - ',
-            format: dateFormat
-        },
-        startDate: dateFrom,
-        endDate: dateTo,
-        jalaali: isRtl,
-        showDropdowns: true
-    }).on('apply.daterangepicker', function (ev, picker) {
-        night = picker.endDate.diff(picker.startDate, 'days');
-        if (night > 0) {
-            $(this).val(picker.startDate.format(dateFormat));
-            $('#dateRangePickerEnd').val(picker.endDate.format(dateFormat));
-        } else {
-            $(this).val('')
-        }
-    });
-}
 
