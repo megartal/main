@@ -5,12 +5,13 @@ $(document).ready(function () {
     $.ajax({
         url: "http://localhost:4000/api/search",
         type: 'POST',
-        data: { city: param('q'), from: param('from'), to: param('to'), guest: param('na'), rooms: param('nr') },
+        data: { city: param('q'), from: param('from'), to: param('to'), guest: param('na'), rooms: param('nr'), sort: $('#hotel-sort').val(), page: param('page') },
         success: function (data) {
             var template = $('#cartId').html();
             var dealTemplate = $('#dealId').html();
             var otaTemplate = $('#OTAId').html();
-            data.forEach(function (element) {
+            populateDate(data);
+            data.hotel_result.forEach(function (element) {
                 var cardhtml = Mustache.render(template, element);
                 var dealHtml = Mustache.render(dealTemplate, element);
                 $('#results').append(cardhtml);
@@ -86,7 +87,40 @@ $(document).ready(function () {
         $('#criteria').toggleClass('edit');
     });
 
+    $('.hbox').on('click', 'li', function () {
+        $(this).siblings().children().removeClass('selected');
+        $(this).children().addClass('selected');
+        var url;
+        if (document.location.href.indexOf('&page') == -1) {
+            url = document.location.href + "&page=" + $(this).children().text();
+        } else {
+            var new_url = document.location.href.substring(0, document.location.href.indexOf('&page'));
+            document.location.href = new_url;
+            url = document.location.href + "&page=" + $(this).children().text();
+        }
+        document.location = url;
+    })
+
 });
+
+function populateDate(data) {
+    $('.hotel-criteria-destination').append(data.query.city);
+    $('.check-in').append(data.query.from);
+    $('.check-out').append(data.query.to);
+    $('.search-summary strong').append(data.result_num);
+    $('.search-summary em').append(data.query.sort);
+    $('.guests').append(data.query.guest + ' نفر ');
+    $('.rooms').append(data.query.rooms + ' اتاق ');
+    $('.pagination-summary em').append(data.query.sort);
+    for (var i = 0; i < (data.result_num / 10) + 1; i++) {
+        j = i + 1;
+        if (i == param('page')) {
+            $('.hbox').append('<li><button class="selected" data-page="' + j + '">' + j + '</button></li>');
+        } else {
+            $('.hbox').append('<li><button data-page="' + j + '">' + j + '</button></li>');
+        }
+    }
+}
 
 
 
