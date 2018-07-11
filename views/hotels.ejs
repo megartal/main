@@ -209,21 +209,23 @@
                     <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
                     <script src="/javascripts/common.js"></script>
                     <script src="/javascripts/hotels.js"></script>
+                    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAB7f5p6Pk_wYI40avPBklUd8INjaMrlWY&sensor=false">
+                    </script>
                     <script id="cartId" type="text/template">
                         <li class="hotel-card cpa-hotel-card clearfix" id="{{hotel_id}}">
                             <div class="cpa__hotel-card__container">
                                 <a href="" class="hotel-thumbnail cpa-hotel-thumbnail hotel-details-link" style="height: auto !important; display: block;">
                                     <div class="cpa-main-image-container">
-                                        <img class="cpa-main-image" src="{{main_image}}/300/210">
+                                        <img class="cpa-main-image" src="{{main_image}}">
                                         <div class="cpa-main-image-cover">
                                             <!-- <span> More photos </span> -->
                                             <!-- <img class="cpa-more-photos-image" src="/images/more_photos.png"> -->
                                         </div>
                                     </div>
                                     <br>
-                                    <img class="lazy-htile cpa-small-image" src="{{image1}}/150/110">
-                                    <img class="lazy-htile cpa-small-image" src="{{image2}}/150/110">
-                                    <img class="lazy-htile cpa-small-image" src="{{image3}}/150/110">
+                                    <img class="lazy-htile cpa-small-image" src="{{image1}}">
+                                    <img class="lazy-htile cpa-small-image" src="{{image2}}">
+                                    <img class="lazy-htile cpa-small-image" src="{{image3}}">
                                 </a>
                                 <div class="hotel-content cpa__hotel-card__content">
                                     <a href="" class="hotel-details hotel-details-link"></a>
@@ -231,19 +233,20 @@
                                         <a href="" class="hotel-details hotel-details-link"></a>
                                         <div class="hotel-title-map-link">
                                             <a href="" class="hotel-details hotel-details-link">
-                                                <h3 data-icon="stars after" class="stars-3 hotel-name" data-stars="3">{{hotel_name}}</h3>
+                                                <h3 class="hotel-name">{{hotel_name}}
+                                                    <div id="{{hotel_id}}stars" style="margin-right: 1em" class="rating"></div>
+                                                </h3>
                                             </a>
                                             <div class="hotel-distance-wrapper">
                                                 <a href="" class="hotel-details hotel-details-link">
-                                                    <span data-icon="distance before" class="hotel-geo map-trigger" data-map-trigger="Hotel Tile" data-lat="{{location.lat}}" data-lon="location.lang">
+                                                    <span data-icon="distance after" class="hotel-geo map-trigger">
                                                         مشاهده نقشه
                                                     </span>
                                                 </a>
                                                 <div class="hotel_yet_another_semantic_name_wrapper">
                                                     <a href="" class="hotel-details hotel-details-link"></a>
-                                                    <a href="" class="hotel_policies hotel-details-link " data-inlinetab="facilities">
-                                                        <span class="hotel_policy hotel_policy_wifi" data-icon="Internet_white before">Wi-Fi</span>
-                                                        <span class="hotel_policy hotel_policy_parking" data-icon="Parking_positive before">Parking</span>
+                                                    <a id="{{hotel_id}}amenity" href="" class="hotel_policies hotel-details-link " data-inlinetab="facilities">
+                                                        
                                                     </a>
                                                 </div>
                                             </div>
@@ -252,11 +255,9 @@
                                                     <strong> {{address}} </strong>
                                                     <img src="" alt="">
                                                 </div>
-                                                <div class="hotel-cpa-reviews">
-                                                    <p>"{{amenity1}}"</p>
-                                                    <p>"{{amenity2}}"</p>
+                                                <!-- <div class="hotel-cpa-reviews">
                                                     <p>"{{amenity3}}"</p>
-                                                </div>
+                                                </div> -->
                                             </a>
                                             <div class="hotel-deals">
                                                 <div class="hidden-prices hidden">
@@ -276,30 +277,21 @@
                                                 </div>
 
                                                 <div class="cpa__hotel-card__deal_discover">
-                                                    <a class="cpa__hotel-card__deal_discover__price hotel-details-link" data-inlinetab="prices" href="/hotels/hotel/Radisson+Blu+Edwardian%2C+Kenilworth?idx=1&amp;id=115325450&amp;sd=2018-05-15&amp;ed=2018-05-17&amp;na=2&amp;nr=1&amp;q=London%252C%2BEngland%252C%2BUnited%2BKingdom&amp;jbi=0&amp;tq=London%252C%2BEngland%252C%2BUnited%2BKingdom&amp;eid=o_27544008&amp;trps=1&amp;trld=1#detail-providers">
-                                                        <div class="cpa__hotel-card__deal_discover__see-prices">
-                                                            مشاهده {{ota_result_num}} قيمت از
-                                                        </div>
-                                                        <div>
-                                                            <div class="deal_meta price_meta price_format_total">
-                                                                <span class="price price_total price_full">
-                                                                {{hotel_min_value}}
-                                                                </span>
-                                                            </div>
-                                                            <div class="deal_meta price_meta price_format_room_night">
-                                                                <span class="price price_total price_full">
-                                                                    250،000
-                                                                </span>
-                                                            </div>
-                                                        </div>
-
+                                                    <a class="cpa__hotel-card__deal_discover__price hotel-details-link" data-inlinetab="prices">
                                                         <div class="price-description-msg">
-                                                            <div class="price-per-room-msg" id="price-description-msg-total">
-                                                                قيمت کل براي {{query.night}} شب،{{query.guest}} نفر،{{query.rooms}} اتاق
-                                                            </div>
-                                                            <div class="price-per-room-msg" id="price-description-msg-room-night">
-                                                                قيمت براي هر شب،هر اتاق براي دو نفر
-                                                            </div>
+                                                                <div class="price-per-room-msg" id="price-description-msg-total">
+                                                                   کمترین قيمت براي {{query.night}} شب،{{query.guest}} نفر،{{query.rooms}} اتاق
+                                                                </div>
+                                                        </div>
+                                                        <div class="deal_meta price_meta price_format_total">
+                                                                <span class="price price_total price_full">
+                                                                {{hotel_min_value}} تومان
+                                                                </span>
+                                                        </div>
+                                                        <div class="price-description-msg">
+                                                                <div class="price-per-room-msg" id="price-description-msg-total">
+                                                                        {{ota_result_num}} نتیجه یافت شد
+                                                                </div>
                                                         </div>
                                                     </a>
 
@@ -328,15 +320,6 @@
 
                             <div class="hotel-inline-item hotel-inline-prices" style="display: block;">
                                 <div id="detail-providers" class="hotel-detail hotel-detail-providers highlight_official">
-                                    <h3 class="clearfix ">
-                                        قیمتها
-                                        <span class="detail-providers_search-meta">فیمت برای یک شب، دو نفر، یک اتاق</span>
-                                        <div id="progress_top" class="hotel_progress">
-                                            <div class="track">
-                                                <p class="bar" style="width: 0%;"></p>
-                                            </div>
-                                        </div>
-                                    </h3>
                                     <div id="{{hotel_id}}ota" class="hotel-deals">
 
                                     </div>
@@ -346,7 +329,7 @@
                             <div class="hotel-inline-item hotel-inline-desc" style="display: none;">
                                 <header id="detail-header" class="hotel-header hotel-detail">
                                     <div id="detail-description" class="hotel-description">
-                                        <p>{{description}}</p>
+                                        <p>{{desc}}</p>
                                         <div class="spinner-wrapper hidden">
                                             <div class="spinner"></div>
                                         </div>
@@ -360,18 +343,22 @@
                                 <div id="detail-location" class="hotel-detail hotel-detail-location">
                                     <h3>Location</h3>
                                     <figure>
-                                        <a id="btn-map" href="#">
-                                            <img class="lazy-map" data-original=""
-                                                src="//maps.googleapis.com/maps/api/staticmap?size=744x256&amp;maptype=roadmap&amp;sensor=false&amp;language=en-GB&amp;region=UK&amp;scale=2&amp;center=51.52669%2C-0.11393&amp;zoom=14&amp;markers=scale%3A2%7Csize%3Amid%7Cicon%3Ahttp%3A%2F%2Fwww.skyscanner.net%2Fhotels%2Fstatic%2Fcommon%2Fimg%2Fstatic_map%2Fcity-center.gif%7C51.5081289%2C-0.128005&amp;markers=scale%3A2%7Cicon%3Ahttp%3A%2F%2Fwww.skyscanner.net%2Fhotels%2Fstatic%2Fcommon%2Fimg%2Fstatic_map%2Fmap-pin.png%7C51.5267%2C-0.1139&amp;key=AIzaSyD1HNuACWxQJ296sPgoUreH-QnxGysv5cM&amp;signature=px49S5jr075gahcEW8ctYDTsXec="
-                                                alt="">
-                                            <span data-icon="fullscreen after" class="expand">Expand</span>
-                                        </a>
+                                        <div id="map"></div>
                                         <figcaption>
                                             <p>{{address}}</p>
                                         </figcaption>
                                     </figure>
                                 </div>
                             </div>
+                            <div class="hotel-inline-item hotel-inline-facilities" style="display: none;">
+                                    <div id="detail-facilities" class="hotel-detail  hotel-detail-facilities">
+                                        <h3>Facilities</h3>
+                                        <ol id="hotel-facilities" class="hotel-bullets">
+                                            <li data-icon="General before">
+                                            </li>
+                                        </ol>
+                                    </div>
+                                </div>
                             <div class="cpa-hotel-inline-hide-details">
                                 <div class="hotel-cta-secondary">
                                     <a data-icon="upBlue after">
@@ -389,16 +376,8 @@
                                         <div class="partner partner-logo" style="background-image:url(/images/logo/{{ota.logo}});"></div>
                                         <div class="partner partner-usp">وب سایت</div>
                                     </div>
-                                    <div class="deal_meta room_meta">
-                                        <div class="room_type">
-                                            نام اتاق
-                                        </div>
-                                        <div class="room_policies">
-                                            <span class="policy policy_label room_policy tooltip-trigger policy_negative">
-                                                Non refundable
-                                                <span class="policy-tooltip"></span>
-                                            </span>
-                                        </div>
+                                    <div id="{{hotel_id}}{{ota.id}}" class="deal_meta room_meta">
+
                                     </div>
                                 </div>
                                 <div class="hotel-deal-price price_column ">
@@ -423,5 +402,3 @@
     </body>
 
 </html>
-
-

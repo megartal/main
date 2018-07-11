@@ -25,13 +25,13 @@
     margin: 0;
     padding: .375rem 1.125rem;
     border: 0;
-    border-radius: 1.125rem;
+    border-radius: 1.10rem;
     background-color: #00d775;
     background-image: linear-gradient(-180deg, #00d775 0, #00bd68 100%);
     color: white;
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-weight: 700;
-    line-height: 1.5rem;
+    line-height: 1.2rem;
     text-align: center;
     text-decoration: none;
     box-shadow: none;

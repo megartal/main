@@ -15,10 +15,22 @@ $(document).ready(function () {
                 var dealHtml = Mustache.render(dealTemplate, element);
                 $('#results').append(cardhtml);
                 hotelId = '#' + element.hotel_id;
+                if (element.internet)
+                    $(hotelId + 'amenity').append('<span class="hotel_policy hotel_policy_wifi" data-icon="Internet_white before">Wi-Fi</span>');
+                if (element.parking)
+                    $(hotelId + 'amenity').append('<span class="hotel_policy hotel_policy_parking" data-icon="Parking_positive before">Parking</span>');
+
+                for (var i = 0; i < element.stars; i++) {
+                    $(hotelId + 'stars').append('<span style="font-size:100%;color:yellow;">&starf;</span>');
+                }
                 $(hotelId).append(dealHtml);
                 element.ota_results.forEach(function (ota) {
+                    ota.hotel_id = element.hotel_id;
                     var otaHtml = Mustache.render(otaTemplate, ota);
                     $(hotelId + 'ota').append(otaHtml);
+                    ota.price_info.rooms.forEach(function (roomName) {
+                        $(hotelId + ota.ota.id).append('<div class="room_type">' + roomName + '</div>')
+                    });
                 });
             });
         }
@@ -40,7 +52,7 @@ $(document).ready(function () {
         $(hotelId).css('display', 'none');
     });
 
-    $('#results').on('click', '.cpa-hotel-inline-hide-details', function(){
+    $('#results').on('click', '.cpa-hotel-inline-hide-details', function () {
         $('.collapse_details').trigger('click');
     })
 
@@ -53,8 +65,10 @@ $(document).ready(function () {
             $(this).parent().siblings('.hotel-inline-prices').css('display', 'block');
         if (tab == 'desc')
             $(this).parent().siblings('.hotel-inline-desc').css('display', 'block');
-        if (tab == 'location')
+        if (tab == 'location') {
+            initMap();
             $(this).parent().siblings('.hotel-inline-location').css('display', 'block');
+        }
         if (tab == 'facilities')
             $(this).parent().siblings('.hotel-inline-facilities').css('display', 'block');
 
@@ -65,6 +79,13 @@ $(document).ready(function () {
     });
 
 });
+
+function initMap() {
+    var hotel = { lat: -25.344, lng: 131.036 };
+    var map = new google.maps.Map(
+        $('#map'), { zoom: 4, center: hotel });
+    var marker = new google.maps.Marker({ position: hotel, map: map });
+}
 
 
 
