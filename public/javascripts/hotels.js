@@ -57,16 +57,24 @@ $(document).ready(function () {
     })
 
     $('#results').on('click', '.hotel-inline-tab', function () {
+        var location = {};
         $(this).siblings().removeClass('tab-selected');
         $(this).addClass('tab-selected');
         var tab = $(this).attr('data-elem');
+        var hotel_id = $(this).attr('data-hotel-id');
         $(this).parent().siblings('.hotel-inline-item').css('display', 'none');
         if (tab == 'prices')
             $(this).parent().siblings('.hotel-inline-prices').css('display', 'block');
         if (tab == 'desc')
             $(this).parent().siblings('.hotel-inline-desc').css('display', 'block');
         if (tab == 'location') {
-            initMap();
+            if ($('#' + hotel_id + 'figure').children().length < 2) {
+                location.lat = $(this).attr('data-lat');
+                location.lang = $(this).attr('data-lang');
+                var template = $('#locationId').html();
+                var map = Mustache.render(template, location);
+                $('#' + hotel_id + 'figure').prepend(map);
+            }
             $(this).parent().siblings('.hotel-inline-location').css('display', 'block');
         }
         if (tab == 'facilities')
@@ -80,12 +88,6 @@ $(document).ready(function () {
 
 });
 
-function initMap() {
-    var hotel = { lat: -25.344, lng: 131.036 };
-    var map = new google.maps.Map(
-        $('#map'), { zoom: 4, center: hotel });
-    var marker = new google.maps.Marker({ position: hotel, map: map });
-}
 
 
 

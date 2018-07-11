@@ -209,8 +209,6 @@
                     <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
                     <script src="/javascripts/common.js"></script>
                     <script src="/javascripts/hotels.js"></script>
-                    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAB7f5p6Pk_wYI40avPBklUd8INjaMrlWY&sensor=false">
-                    </script>
                     <script id="cartId" type="text/template">
                         <li class="hotel-card cpa-hotel-card clearfix" id="{{hotel_id}}">
                             <div class="cpa__hotel-card__container">
@@ -315,7 +313,7 @@
                             <ul class="hotel-inline-navigation">
                                 <li class="hotel-inline-tab tab-selected" data-elem="prices">قیمت ها</li>
                                 <li class="hotel-inline-tab" data-elem="desc">توضیحات</li>
-                                <li class="hotel-inline-tab" data-elem="location">موقعیت</li>
+                                <li class="hotel-inline-tab" data-hotel-id="{{hotel_id}}" data-lat="{{location.lat}}" data-lang="{{location.lang}}" data-elem="location">موقعیت</li>
                             </ul>
 
                             <div class="hotel-inline-item hotel-inline-prices" style="display: block;">
@@ -337,19 +335,16 @@
                                     </div>
                                 </header>
                             </div>
-
-
                             <div class="hotel-inline-item hotel-inline-location" style="display: none;">
-                                <div id="detail-location" class="hotel-detail hotel-detail-location">
-                                    <h3>Location</h3>
-                                    <figure>
-                                        <div id="map"></div>
-                                        <figcaption>
-                                            <p>{{address}}</p>
-                                        </figcaption>
-                                    </figure>
-                                </div>
+                                    <div id="detail-location" class="hotel-detail hotel-detail-location">
+                                        <figure id="{{hotel_id}}figure">
+                                                <figcaption>
+                                                    <p>{{address}}</p>
+                                                </figcaption>
+                                        </figure>
+                                    </div>
                             </div>
+
                             <div class="hotel-inline-item hotel-inline-facilities" style="display: none;">
                                     <div id="detail-facilities" class="hotel-detail  hotel-detail-facilities">
                                         <h3>Facilities</h3>
@@ -398,7 +393,15 @@
                             </div>
                         </a>
                     </script>
+                    <script id="locationId" type="text/template">
+                        <a id="btn-map">
+                                <img class="lazy-map" src="https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=744x256&maptype=roadmap&key=AIzaSyAB7f5p6Pk_wYI40avPBklUd8INjaMrlWY&format=png&markers=color:red%7Clabel:h%7C{{lat}},{{lang}}">
+                        </a>
+                    </script>
         </div>
     </body>
 
 </html>
+
+
+
