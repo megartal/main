@@ -70,17 +70,21 @@ $(document).ready(function () {
     $('input[name="filter-category"]').on('change', function () {
         $('input[name="filter-category"]').not(this).prop('checked', false);
         search('star', $(this).val());
-    })
+    });
 
     $('input[name="filter-city"]').on('change', function () {
         $('input[name="filter-city"]').not(this).prop('checked', false);
         search('city', $(this).val());
-    })
+    });
 
-    $('input[name="filter-filter-accomodationtype"]').on('change', function () {
-        $('input[name="filter-filter-accomodationtype"]').not(this).prop('checked', false);
+    $('input[name="filter-accomodationtype"]').on('change', function () {
+        $('input[name="filter-accomodationtype"]').not(this).prop('checked', false);
         search('accomType', $(this).val());
-    })
+    });
+
+    $('#hotel-sort').on('change', function () {
+        search('sort');
+    });
 
 });
 
@@ -88,7 +92,7 @@ function search(type, value) {
     var flag = true;
     var city = '';
     var star = 0;
-    var accomType = '';
+    var accomType = 'hotel';
     var range = 0;
     var page = param('page');
     if (type == 'city') {
@@ -113,6 +117,11 @@ function search(type, value) {
         page = 1;
         flag = false;
     }
+    if (type == 'sort') {
+        page = 1;
+        flag = false;
+    }
+
 
     $.ajax({
         url: "http://localhost:4000/api/search",
@@ -122,48 +131,62 @@ function search(type, value) {
             sort: $('#hotel-sort').val(), page: page, star: star, type: accomType, range: range
         },
         success: function (data) {
-            var template = $('#cartId').html();
-            var dealTemplate = $('#dealId').html();
-            var otaTemplate = $('#OTAId').html();
-            if (flag)
-                populateDate(data);
-            $('#results').children().remove();
-            data.hotel_result.forEach(function (element) {
-                var cardhtml = Mustache.render(template, element);
-                var dealHtml = Mustache.render(dealTemplate, element);
-                $('#results').append(cardhtml);
-                hotelId = '#' + element.hotel_id;
-                if (element.internet)
-                    $(hotelId + 'amenity').append('<span class="hotel_policy hotel_policy_wifi" data-icon="Internet_white before">Wi-Fi</span>');
-                if (element.parking)
-                    $(hotelId + 'amenity').append('<span class="hotel_policy hotel_policy_parking" data-icon="Parking_positive before">Parking</span>');
+            if (data) {
+                var template = $('#cartId').html();
+                var dealTemplate = $('#dealId').html();
+                var otaTemplate = $('#OTAId').html();
+                populateChangedData(data);
+                if (flag)
+                    populateFixData(data);
+                $('#results').children().remove();
+                data.hotel_result.forEach(function (element) {
+                    var cardhtml = Mustache.render(template, element);
+                    var dealHtml = Mustache.render(dealTemplate, element);
+                    $('#results').append(cardhtml);
+                    hotelId = '#' + element.hotel_id;
+                    if (element.internet)
+                        $(hotelId + 'amenity').append('<span class="hotel_policy hotel_policy_wifi" data-icon="Internet_white before">Wi-Fi</span>');
+                    if (element.parking)
+                        $(hotelId + 'amenity').append('<span class="hotel_policy hotel_policy_parking" data-icon="Parking_positive before">Parking</span>');
 
-                for (var i = 0; i < element.stars; i++) {
-                    $(hotelId + 'stars').append('<span style="font-size:100%;color:Orange;">&starf;</span>');
-                }
-                $(hotelId).append(dealHtml);
-                element.ota_results.forEach(function (ota) {
-                    ota.hotel_id = element.hotel_id;
-                    var otaHtml = Mustache.render(otaTemplate, ota);
-                    $(hotelId + 'ota').append(otaHtml);
-                    ota.price_info.rooms.forEach(function (roomName) {
-                        $(hotelId + ota.ota.id).append('<div class="room_type">' + roomName + '</div>')
+                    for (var i = 0; i < element.stars; i++) {
+                        $(hotelId + 'stars').append('<span style="font-size:100%;color:Orange;">&starf;</span>');
+                    }
+                    $(hotelId).append(dealHtml);
+                    element.ota_results.forEach(function (ota) {
+                        ota.hotel_id = element.hotel_id;
+                        var otaHtml = Mustache.render(otaTemplate, ota);
+                        $(hotelId + 'ota').append(otaHtml);
+                        ota.price_info.rooms.forEach(function (roomName) {
+                            $(hotelId + ota.ota.id).append('<div class="room_type">' + roomName + '</div>')
+                        });
                     });
                 });
-            });
+            } else {
+                $('#results').children().remove();
+                alert('there is no result');
+            }
+
         }
     });
 }
 
-function populateDate(data) {
+function populateFixData(data) {
     $('.hotel-criteria-destination').append(data.query.city);
     $('.check-in').append(data.query.from);
     $('.check-out').append(data.query.to);
-    $('.search-summary strong').append(data.result_num);
-    $('.search-summary em').append(data.query.sort);
     $('.guests').append(data.query.guest + ' نفر ');
     $('.rooms').append(data.query.rooms + ' اتاق ');
+}
+
+function populateChangedData(data) {
+    $('.search-summary strong').text('');
+    $('.search-summary strong').append(data.result_num);
+    $('.search-summary em').text('');
+    $('.search-summary em').append($('#hotel-sort option:selected').text());
+    $('.pagination-summary em').text('');
     $('.pagination-summary em').append(data.query.sort);
+    $('.hbox').children().remove();
     for (var i = 1; i <= Math.ceil((data.result_num / 10)); i++) {
         if (i == param('page')) {
             $('.hbox').append('<li><button class="selected" data-page="' + i + '">' + i + '</button></li>');
@@ -173,6 +196,9 @@ function populateDate(data) {
     }
 }
 
+function processResults(data) {
+
+}
 
 
 

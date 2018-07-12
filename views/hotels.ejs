@@ -2,7 +2,7 @@
 <html>
 <%- include header.ejs %>
 
-    <body dir="rtl" id="category-hotels" class="lang-en page-hotelsesi action-hotelsindex   default-layout scaffold-font-size   spring-clean month-view-spring-clean ">
+    <body dir="rtl" style="font-family: 'B Yekan'" id="category-hotels" class="lang-en page-hotelsesi action-hotelsindex   default-layout scaffold-font-size   spring-clean month-view-spring-clean ">
 
         <noscript>
             <div class="no-js-msg">
@@ -140,12 +140,12 @@
                                         </div>
 
                                         <label id="lbl-hotel-sort" for="hotel-sort">مرتب سازی بر اساس</label>
-                                        <select id="hotel-sort" name="sort">
-                                            <option class="sort-item_popularity" value="popularity" selected="">امتیاز</option>
-                                            <option class="sort-item_price-asc" value="price-asc">قیمت</option>
-                                            <option class="sort-item_price-desc" value="price-desc">قیمت (بیشترین به کمترین)</option>
-                                            <option class="sort-item_stars-desc" value="stars-desc">ستاره (5 تا 1)</option>
-                                            <option class="sort-item_stars-asc" value="stars-asc">ستاره (1 تا 5)</option>
+                                        <select id="hotel-sort">
+                                            <option class="sort-item_price-asc" name="sort" value="price-asc" selected="">قیمت</option>
+                                            <option class="sort-item_popularity" value="popularity">امتیاز</option>
+                                            <option class="sort-item_price-desc" name="sort" value="price-desc">قیمت (بیشترین به کمترین)</option>
+                                            <option class="sort-item_stars-desc" name="sort" value="stars-desc">ستاره (پنج تا یک)</option>
+                                            <option class="sort-item_stars-asc" name="sort" value="stars-asc">ستاره (یک تا پنج)</option>
                                         </select>
                                     </li>
 
@@ -265,7 +265,7 @@
                                                                 </div>
                                                         </div>
                                                         <div class="deal_meta price_meta price_format_total">
-                                                                <span class="price price_total price_full">
+                                                                <span class="price price_total price_full" style="font-family: 'B Yekan'">
                                                                 {{hotel_min_value}} تومان
                                                                 </span>
                                                         </div>
@@ -301,7 +301,7 @@
 
                             <div class="hotel-inline-item hotel-inline-prices" style="display: block;">
                                 <div id="detail-providers" class="hotel-detail hotel-detail-providers highlight_official">
-                                    <div id="{{hotel_id}}ota" class="hotel-deals">
+                                    <div id="{{hotel_id}}ota" class="hotel-deals" style="font-family: 'B Yekan'">
 
                                     </div>
                                     <p class="detail-provider-cpa-msg noprices hidden">HOTEL NOT AVAILABLE ON THIS DATE</p>
