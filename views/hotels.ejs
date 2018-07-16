@@ -164,7 +164,7 @@
                             <br>
                             <div id="results-list" class="results-list">
 
-                                    <h2 class="partition" style="display: none">هتل انتخاب شده و هتل های پیشنهادی</h2>
+                                <h2 class="partition" style="display: none">هتل انتخاب شده و هتل های پیشنهادی</h2>
                                 <ol id="results" class="results available">
                                 </ol>
 
@@ -187,6 +187,8 @@
                     <div class="autocomplete-suggestions" style="position: absolute; z-index: 999">
                     </div>
 
+                    <div id="imageContainer"></div>
+
 
                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
                     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -200,9 +202,9 @@
                     <script id="cartId" type="text/template">
                         <li class="hotel-card cpa-hotel-card clearfix" id="{{hotel_id}}">
                             <div class="cpa__hotel-card__container">
-                                <div class="hotel-thumbnail cpa-hotel-thumbnail hotel-details-link" style="height: auto !important; display: block;">
+                                <div class="hotel-thumbnail cpa-hotel-thumbnail hotel-details-link" style="cursor: pointer; height: auto !important; display: block;">
                                     <div class="cpa-main-image-container">
-                                        <img id="test"  class="cpa-main-image" src="{{main_image}}">
+                                        <img class="cpa-main-image" src="{{main_image}}">
                                         <div class="cpa-main-image-cover">
                                             <span> More photos </span>
                                             <img class="cpa-more-photos-image" src="/images/more_photos.png">
@@ -394,48 +396,77 @@
                             <a data-icon="forwardReverse before" class="arrow arrow-right arrow-hero" href="#"></a>
 
                             <div id="detail-hero" class="swiper-container">
-                                <div class="swiper-wrapper" style="padding-left: 0px; padding-right: 0px; left: 0px; top: 0px; transition-duration: 0s; width: 63000px; height: 635px;">
-                                    <a class="swiper-slide swiper-slide-visible swiper-slide-active">
-                                        <span class="table">
-                                            <span class="table-cell">
-                                                <span class="detail-hero-img-wrapper">
-                                                    <img class="lazy" src="//d3ba47lalua02r.cloudfront.net/available/139028855/rmca.jpg">
-                                                    <span class="img-attribution">Source: Leonardo</span>
-                                                </span>
-                                            </span>
-                                        </span>
-                                    </a>
-                                    <a class="swiper-slide swiper-slide-visible">
-                                        <span class="table">
-                                            <span class="table-cell">
-                                                <span class="detail-hero-img-wrapper">
-                                                    <img class="lazy" src="//d3ba47lalua02r.cloudfront.net/available/65685855/rmca.jpg">
-                                                </span>
-                                            </span>
-                                        </span>
-                                    </a>
+                                <div id="topSlides" class="swiper-wrapper" style="padding-left: 0px; padding-right: 0px; left: 0px; top: 0px; transition-duration: 0s; width: 63000px; height: 635px;">
+
                                 </div>
                             </div>
-
                             <div id="detail-hero-thumbnail-wrapper">
                                 <a data-icon="backReverse before" class="arrow arrow-left" href="#"></a>
                                 <a data-icon="forwardReverse before" class="arrow arrow-right" href="#"></a>
                                 <div id="detail-hero-thumbnail" class="swiper-container-thumbnail">
-                                    <div class="swiper-wrapper" style="padding-left: 0px; padding-right: 0px; width: 10000px; height: 0px;">
-                                        <a class="swiper-slide swiper-slide-visible swiper-slide-active active-thumbnail">
-                                            <span>
-                                                <img src="//d3ba47lalua02r.cloudfront.net/available/139028855/rmt.jpg">
-                                            </span>
-                                        </a>
-                                        <a class="swiper-slide swiper-slide-visible">
-                                            <span>
-                                                <img src="//d3ba47lalua02r.cloudfront.net/available/65685855/rmt.jpg">
-                                            </span>
-                                        </a>
+                                    <div id="belowSlides" class="swiper-wrapper" style="padding-left: 0px; padding-right: 0px; width: 10000px; height: 0px;">
+
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </script>
+                    <script id="imageTopSlideId" type="text/template">
+                        <a class="swiper-slide">
+                                <span class="table">
+                                    <span class="table-cell">
+                                        <span class="detail-hero-img-wrapper">
+                                            <img class="lazy" src="{{src}}">
+                                            <!-- <span class="img-attribution">{{caption}}</span> -->
+                                    </span>
+                                </span>
+                            </span>
+                        </a>
+                    </script>
+                    <script id="imageTopSlideVisiableId" type="text/template">
+                        <a class="swiper-slide swiper-slide-visible">
+                                <span class="table">
+                                    <span class="table-cell">
+                                        <span class="detail-hero-img-wrapper">
+                                            <img class="lazy" src="{{src}}">
+                                            <!-- <span class="img-attribution">{{caption}}</span> -->
+                                    </span>
+                                </span>
+                            </span>
+                        </a>
+                    </script>
+                    <script id="imageTopSlideVisiableActiveId" type="text/template">
+                        <a class="swiper-slide swiper-slide-visible swiper-slide-active">
+                                <span class="table">
+                                    <span class="table-cell">
+                                        <span class="detail-hero-img-wrapper">
+                                            <img class="lazy" src="{{src}}">
+                                            <!-- <span class="img-attribution">{{caption}}</span> -->
+                                    </span>
+                                </span>
+                            </span>
+                        </a>
+                    </script>
+                    <script id="imagebelowSildeId" type="text/template">
+                        <a class="swiper-slide">
+                                <span>
+                                    <img src="{{src}}">
+                                </span>
+                            </a>
+                    </script>
+                    <script id="imagebelowSildeVisiableId" type="text/template">
+                        <a class="swiper-slide swiper-slide-visible">
+                                <span>
+                                    <img src="{{src}}">
+                                </span>
+                            </a>
+                    </script>
+                    <script id="imagebelowSildeVisiableActiveId" type="text/template">
+                        <a class="swiper-slide swiper-slide-visible swiper-slide-active active-thumbnail">
+                                <span>
+                                    <img src="{{src}}">
+                                </span>
+                            </a>
                     </script>
         </div>
     </body>

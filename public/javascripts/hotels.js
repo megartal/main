@@ -3,27 +3,26 @@ $(document).ready(function () {
     datePicker();
     search();
 
-    //مشاهده قیمت ها
-    $('#results').on('click', '.expand_details', function () {
-        $(this).addClass('hidden');
-        $(this).parent().attr('data-icon', 'upBlue before');
-        $(this).siblings().removeClass('hidden');
-        var hotelId = '#' + $(this).parent().attr('data-hotel') + 'deals';
-        $(hotelId).css('display', 'block');
+    //مشاهده و بستن قیمت ها
+    $('#results').on('click', '.cpa__hotel-card__main-cta', function () {
+        if ($(this).children().first().attr('data-icon') == 'downBlue before') {
+            $(this).children().first().find('.expand_details').addClass('hidden');
+            $(this).children().first().attr('data-icon', 'upBlue before');
+            $(this).children().first().find('.collapse_details').removeClass('hidden');
+            var hotelId = '#' + $(this).children().first().attr('data-hotel') + 'deals';
+            $(hotelId).css('display', 'block');
+        } else {
+            $(this).children().first().find('.collapse_details').addClass('hidden');
+            $(this).children().first().attr('data-icon', 'downBlue before');
+            $(this).children().first().find('.expand_details').removeClass('hidden');
+            var hotelId = '#' + $(this).children().first().attr('data-hotel') + 'deals';
+            $(hotelId).css('display', 'none');
+        }
     });
 
-    // بستن مشاهده قیمتها
-    $('#results').on('click', '.collapse_details', function () {
-        $(this).addClass('hidden');
-        $(this).parent().attr('data-icon', 'downBlue before');
-        $(this).siblings().removeClass('hidden');
-        var hotelId = '#' + $(this).parent().attr('data-hotel') + 'deals';
-        $(hotelId).css('display', 'none');
-    });
-
-    // $('#results').on('click', '.cpa-hotel-inline-hide-details', function () {
-    //     $('.collapse_details').trigger('click');
-    // })
+    $('#results').on('click', '.cpa-hotel-inline-hide-details', function () {
+        $('.cpa__hotel-card__main-cta').trigger('click');
+    })
 
 
     $('#results').on('click', '.hotel-inline-tab', function () {
@@ -53,10 +52,59 @@ $(document).ready(function () {
     });
 
     //more Images
-    $('#results').on('click', '#test', function () {
+    $('#results').on('click', '.hotel-thumbnail', function () {
+        $('head').append($('<link rel="stylesheet" id="cssLTR" type="text/css" />').attr('href', '/Styles/search-results-ltr.css'));
+        var hotelId = $(this).parent().parent().attr('id');
         var template = $('#imageSlideContainerId').html();
-        var cardhtml = Mustache.render(template, element);
+        var topSildeTemplate = $('#imageTopSlideId').html();
+        var topSildeVisiableTemplate = $('#imageTopSlideVisiableId').html();
+        var topSildeActiveTemplate = $('#imageTopSlideVisiableActiveId').html();
+        var belewSlideTemplate = $('#imagebelowSildeId').html();
+        var belewSlideVisiableTemplate = $('#imagebelowSildeVisiableId').html();
+        var belewSlideVisiableActiveTemplate = $('#imagebelowSildeVisiableActiveId').html();
+        $.ajax({
+            url: "http://localhost:4000/api/images",
+            method: 'POST',
+            data: { id: hotelId },
+            success: function (data) {
+                var imageSlides = Mustache.render(template);
+                $('#imageContainer').append(imageSlides);
+                var last = data.length;
+                data.forEach(function (element, index) {
+                    if (index == 0) {
+                        var topSlides = Mustache.render(topSildeActiveTemplate, element);
+                        var belowSlides = Mustache.render(belewSlideVisiableActiveTemplate, element);
+                    } else if (0 < index && index < 3) {
+                        var topSlides = Mustache.render(topSildeVisiableTemplate, element);
+                    } else if (2 < index) {
+                        var topSlides = Mustache.render(topSildeTemplate, element);
+                    }
+                    if (0 < index && index < 15) {
+                        var belowSlides = Mustache.render(belewSlideVisiableTemplate, element);
+                    } else if (index > 0) {
+                        var belowSlides = Mustache.render(belewSlideTemplate, element);
+                    }
+                    $('#topSlides').append(topSlides);
+                    $('#belowSlides').append(belowSlides);
+                    $('#cssRTL').attr("disabled", "disabled");
+                })
+            }
+        });
     });
+
+    //close images
+    $('body').on('click', '.close', function () {
+        $('#imageContainer').children().remove();
+        $('#cssRTL').removeAttr('disabled');
+        $('#cssLTR').remove();
+    });
+    //close images
+    $('body').on('click', '.table', function () {
+        $('#imageContainer').children().remove();
+        $('#cssRTL').removeAttr('disabled');
+        $('#cssLTR').remove();
+    });
+
 
     //آیکون جستجوی جدید
     $('#new-search').click(function () {
@@ -147,7 +195,7 @@ $(document).ready(function () {
         if (city == '')
             city = param('city');
 
-        if(param('q') != param('city'))
+        if (param('q') != param('city'))
             $('.partition').css('display', 'block');
 
         $.ajax({
