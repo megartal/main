@@ -1,33 +1,62 @@
-$('#hotel-search-form').on('mouseenter', '.autocomplete-suggestion', function () {
+var qChanged = false;
+var qSelected = false;
+var city = '';
+
+//mouse over on auto complete
+$('body').on('mouseenter', '.autocomplete-suggestion', function () {
     $(this).css("background-color", "#e4e6e8");
     $(this).css("cursor", "pointer");
 });
 
-$('#hotel-search-form').on('mouseleave', '.autocomplete-suggestion', function () {
+//mouse leave on auto complete
+$('body').on('mouseleave', '.autocomplete-suggestion', function () {
     $(this).css("background-color", "white");
     $(this).css("cursor", "pointer");
 });
 
-$('#hotel-search-form').on('click', '.autocomplete-suggestion', function () {
-    var city = $(this).text();
-    $('#q').val(city);
+//select auto complete suggestion
+$('body').on('click', '.autocomplete-suggestion', function () {
+    qSelected = true;
+    qChanged = false;
+    $('#q').val($(this).find('strong').text());
+    $('#cityId').val($(this).attr('id'));
     $('.autocomplete-suggestions').children().remove();
 });
 
-
-$('#q').keyup(function () {
-    $.ajax({
-        url: 'http://localhost:4000/api/city',
-        data: { city: $(this).val() },
-        success: function (data) {
-            $('.autocomplete-suggestions').children().remove();
-            data.forEach(function(element){
-                $('.autocomplete-suggestions').append('<div class="autocomplete-suggestion" data-index="0"><small><strong>' + element.city + '</strong></small></div>');
-            });
+//form submit
+$("form").submit(function (e) {
+    if ($('#q').val() == '') {
+        alert('please fill the query')
+        return false;
+    } else {
+        if (param('city')) {
+            $('#cityId').val(param('city'));
         }
-    })
+        if (qChanged && !qSelected) {
+            $('#q').val($('.autocomplete-suggestions').children().first('.autocomplete-suggestion').find('strong').text());
+            $('#cityId').val($('.autocomplete-suggestions').children().first('.autocomplete-suggestion').attr('id'));
+        }
+        return true;
+    }
 });
 
+//change auto complete imput
+$('#q').change(function () {
+    $.ajax({
+        url: 'http://localhost:4000/api/city',
+        data: { term: $('#q').val() },
+        success: function (data) {
+            $('.autocomplete-suggestions').children().remove();
+            data.forEach(function (element) {
+                $('.autocomplete-suggestions').append(' <div id="' + element.city + '" class="autocomplete-suggestion"><p><strong>' + element.name + '</strong></p><small><span class="location">' + element.province + '</span><span class="type">' + element.type + '</span></small></div>');
+            });
+            qChanged = true;
+            qSelected = false;
+        }
+    });
+});
+
+// set default date
 function setDefultDate() {
     from = new Date();
     from.setDate(from.getDate() + 2);
@@ -37,6 +66,7 @@ function setDefultDate() {
     $('#dateRangePickerEnd').val(moment(to).locale('fa').format('jYYYY/jMM/jDD'));
 }
 
+//date picker
 function datePicker() {
     var night;
     var isRtl = true;
@@ -70,16 +100,7 @@ function datePicker() {
     });
 }
 
-function collectSearchData() {
-    var search = {};
-    search.city = $('#q').val();
-    search.from = $('#dateRangePicker').val();
-    search.to = $('#dateRangePickerEnd').val();
-    search.guest = $('#na').val();
-    search.rooms = $('#nr').val();
-    return search;
-}
-
+//get url params
 function param(sParam) {
     var sPageURL = decodeURIComponent(window.location.search.substring(1)),
         sURLVariables = sPageURL.split('&'),
@@ -94,3 +115,18 @@ function param(sParam) {
         }
     }
 }
+
+
+//auto complete position absolout
+function autocomplete() {
+    element = document.getElementById('autocomplete-position');
+    var top = $('#autocomplete-position').offset().top - $('#position-fixer').offset().top;
+    var rect = element.getBoundingClientRect();
+    var width = element.offsetWidth;
+    $('.autocomplete-suggestions').css('top', top).css('left', rect.left).css('width', width).css('display', 'block');
+}
+
+
+
+
+

@@ -2,8 +2,9 @@
 
     <label class="field destination white-text">
         جستجوي شهر
-        <input type="text" name="q" id="q" placeholder="شهر مورد نظر را انتخاب کنيد." value=""  autocomplete="off"/>
-        <div class="autocomplete-suggestions">
+        <input type="text" name="q" id="q" placeholder="شهر مورد نظر را انتخاب کنيد." value="" autocomplete="off" />
+        <input id="cityId" name="city" style="display: none;">
+        <div id="autocomplete-position">
         </div>
         <button id="clear-search" class="destination-clear hidden" type="button" tabIndex="-1" aria-label="Clear"></button>
         <div id="empty-destination-box" class="hotel-search-form--error">
@@ -14,11 +15,13 @@
     <fieldset class="field dates">
         <div class="col-sm-6 dateRangePicker">
             <label class="control-label margin-b-0 white-text" placeholder="تاريخ ورود">تاريخ ورود</label>
-            <input type="text" class="form-control" id="dateRangePicker" name="from" autocomplete="off" placeholder="   تاريخ ورود" />
+            <input type="text" class="form-control" id="dateRangePicker" name="from" required="" oninvalid="this.setCustomValidity('لطفا تاریخ ورود را انتخاب کنيد')"
+                oninput="setCustomValidity('')" autocomplete="off" placeholder="   تاريخ ورود" />
         </div>
         <div class="col-sm-6 dateRangePicker">
             <label class="control-label margin-b-0 white-text">تاريخ خروج</label>
-            <input type="text" class="form-control" id="dateRangePickerEnd" name="to" autocomplete="off" placeholder="   تاريخ خروج" />
+            <input type="text" class="form-control" id="dateRangePickerEnd" name="to" required="" oninvalid="this.setCustomValidity('لطفا تاریخ خروج را انتخاب کنيد')"
+                oninput="setCustomValidity('')" autocomplete="off" placeholder="   تاريخ خروج" />
         </div>
     </fieldset>
 
@@ -41,11 +44,6 @@
                 <option value="3">3</option>
                 <option value="4">4</option>
                 <option value="5">5</option>
-            </select>
-        </label>
-        <label style="display: none;">
-            <select id="page" name="page">
-                <option value="1" selected="selected">1</option>
             </select>
         </label>
     </fieldset>

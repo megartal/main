@@ -3,25 +3,25 @@
 <%- include header.ejs %>
 
     <body dir="rtl" style="font-family: 'B Yekan'" id="category-hotels" class="lang-en page-hotelsesi action-hotelsindex   default-layout scaffold-font-size   spring-clean month-view-spring-clean ">
-
+        <div id="position-fixer"></div>
         <noscript>
             <div class="no-js-msg">
                 <p>
-                    Diringo needs JavaScript to work. It looks like your browser doesn't support JavaScript, or has it turned off. Please try
+                    aratrip needs JavaScript to work. It looks like your browser doesn't support JavaScript, or has it turned off. Please try
                     again with JavaScript support.
                 </p>
             </div>
         </noscript>
         <div id="pagewrap" class="clearfix">
             <div class="wrap h1-heading">
-                <h1 id="h1-heading">هتل ها | ديرينگو - با استفاده از ديرينگو هتل ها را جستجو و مقايسه کنيد.</h1>
+                <h1 id="h1-heading">هتل ها | آراتریپ - با استفاده از آراتریپ هتل ها را جستجو و مقايسه کنيد.</h1>
             </div>
 
             <%- include navbar.ejs %>
                 <!--  body -->
 
                 <!-- START  -->
-                <div id="-wrap" class="wrap clearfix">
+                <div id="-wrap" class="wrap clearfix" style="font-family: 'B Yekan'">
                     <div id="criteria" class="search_controls search_controls_criteria hotel-criteria hotel_layout springClean ">
                         <div id="criteria-header" class="hotel-criteria-header clearfix">
                             <button id="new-search" class="hotel-cta-secondary" data-icon="searchBlue before" type="button">
@@ -36,11 +36,11 @@
                             </div>
 
                             <div class="hotel-criteria-occupancy" data-icon="adult before">
-                                <span class="guests"></span>,
-                                <span class="rooms"></span>
+                                <span id="guests" class="guests"></span>,
+                                <span id="rooms" class="rooms"></span>
                             </div>
                         </div>
-                        <div id="search-form-wrapper" class="hotel-search-form-wrapper springClean  ">
+                        <div id="search-form-wrapper" class="hotel-search-form-wrapper springClean">
 
                             <%- include search-form.ejs %>
                         </div>
@@ -164,6 +164,7 @@
                             <br>
                             <div id="results-list" class="results-list">
 
+                                    <h2 class="partition" style="display: none">هتل انتخاب شده و هتل های پیشنهادی</h2>
                                 <ol id="results" class="results available">
                                 </ol>
 
@@ -179,12 +180,16 @@
 
                     <div class=" legal-info">
                         <p id="copyright" class="asian-lang-font-reset">
-                            <span> diringo &copy; 2018-2018</span>
+                            <span> aratrip &copy; 2018-2018</span>
                         </p>
+                    </div>
+
+                    <div class="autocomplete-suggestions" style="position: absolute; z-index: 999">
                     </div>
 
 
                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+                    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
                     <script src="/Plugins/dateRangePicker/js/moment.min.js"></script>
                     <script src="/Plugins/dateRangePicker/js/moment-jalaali.js"></script>
                     <script src="/Plugins/dateRangePicker/js/daterangepicker-fa-ex.js"></script>
@@ -195,19 +200,19 @@
                     <script id="cartId" type="text/template">
                         <li class="hotel-card cpa-hotel-card clearfix" id="{{hotel_id}}">
                             <div class="cpa__hotel-card__container">
-                                <a href="" class="hotel-thumbnail cpa-hotel-thumbnail hotel-details-link" style="height: auto !important; display: block;">
+                                <div class="hotel-thumbnail cpa-hotel-thumbnail hotel-details-link" style="height: auto !important; display: block;">
                                     <div class="cpa-main-image-container">
-                                        <img class="cpa-main-image" src="{{main_image}}">
+                                        <img id="test"  class="cpa-main-image" src="{{main_image}}">
                                         <div class="cpa-main-image-cover">
-                                            <!-- <span> More photos </span> -->
-                                            <!-- <img class="cpa-more-photos-image" src="/images/more_photos.png"> -->
+                                            <span> More photos </span>
+                                            <img class="cpa-more-photos-image" src="/images/more_photos.png">
                                         </div>
                                     </div>
                                     <br>
                                     <img class="lazy-htile cpa-small-image" src="{{image1}}">
                                     <img class="lazy-htile cpa-small-image" src="{{image2}}">
                                     <img class="lazy-htile cpa-small-image" src="{{image3}}">
-                                </a>
+                                </div>
                                 <div class="hotel-content cpa__hotel-card__content">
                                     <a href="" class="hotel-details hotel-details-link"></a>
                                     <div class="hotel-meta clearfix">
@@ -381,10 +386,58 @@
                                 <img class="lazy-map" src="https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=744x256&maptype=roadmap&key=AIzaSyAB7f5p6Pk_wYI40avPBklUd8INjaMrlWY&format=png&markers=color:red%7Clabel:h%7C{{lat}},{{lang}}">
                         </a>
                     </script>
+                    <script id="imageSlideContainerId" type="text/template">
+                        <div id="detail-hero-wrapper" class="image-gallery fullscreen overlay" data-lazyimg="/sttc/hotels-front-end/common/img/spinner-tide.gif">
+                            <a data-icon="fullscreen after" class="expand" id="gallery-expand-btn" href="#">Expand</a>
+                            <a data-icon="springCleanCloseReverse after" href="#" class="close"></a>
+                            <a data-icon="backReverse before" class="arrow arrow-left arrow-hero" href="#"></a>
+                            <a data-icon="forwardReverse before" class="arrow arrow-right arrow-hero" href="#"></a>
+
+                            <div id="detail-hero" class="swiper-container">
+                                <div class="swiper-wrapper" style="padding-left: 0px; padding-right: 0px; left: 0px; top: 0px; transition-duration: 0s; width: 63000px; height: 635px;">
+                                    <a class="swiper-slide swiper-slide-visible swiper-slide-active">
+                                        <span class="table">
+                                            <span class="table-cell">
+                                                <span class="detail-hero-img-wrapper">
+                                                    <img class="lazy" src="//d3ba47lalua02r.cloudfront.net/available/139028855/rmca.jpg">
+                                                    <span class="img-attribution">Source: Leonardo</span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </a>
+                                    <a class="swiper-slide swiper-slide-visible">
+                                        <span class="table">
+                                            <span class="table-cell">
+                                                <span class="detail-hero-img-wrapper">
+                                                    <img class="lazy" src="//d3ba47lalua02r.cloudfront.net/available/65685855/rmca.jpg">
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div id="detail-hero-thumbnail-wrapper">
+                                <a data-icon="backReverse before" class="arrow arrow-left" href="#"></a>
+                                <a data-icon="forwardReverse before" class="arrow arrow-right" href="#"></a>
+                                <div id="detail-hero-thumbnail" class="swiper-container-thumbnail">
+                                    <div class="swiper-wrapper" style="padding-left: 0px; padding-right: 0px; width: 10000px; height: 0px;">
+                                        <a class="swiper-slide swiper-slide-visible swiper-slide-active active-thumbnail">
+                                            <span>
+                                                <img src="//d3ba47lalua02r.cloudfront.net/available/139028855/rmt.jpg">
+                                            </span>
+                                        </a>
+                                        <a class="swiper-slide swiper-slide-visible">
+                                            <span>
+                                                <img src="//d3ba47lalua02r.cloudfront.net/available/65685855/rmt.jpg">
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </script>
         </div>
     </body>
 
 </html>
-
-
-

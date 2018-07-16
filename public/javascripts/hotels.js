@@ -1,8 +1,9 @@
 $(document).ready(function () {
-    var city = '', star = 0, accomType = 'hotel', flag = true, range = 0, page = 1;
+    var q = '', city = '', star = 0, accomType = 'hotel', flag = true, range = 0, page = 1;
     datePicker();
     search();
 
+    //مشاهده قیمت ها
     $('#results').on('click', '.expand_details', function () {
         $(this).addClass('hidden');
         $(this).parent().attr('data-icon', 'upBlue before');
@@ -11,6 +12,7 @@ $(document).ready(function () {
         $(hotelId).css('display', 'block');
     });
 
+    // بستن مشاهده قیمتها
     $('#results').on('click', '.collapse_details', function () {
         $(this).addClass('hidden');
         $(this).parent().attr('data-icon', 'downBlue before');
@@ -19,9 +21,10 @@ $(document).ready(function () {
         $(hotelId).css('display', 'none');
     });
 
-    $('#results').on('click', '.cpa-hotel-inline-hide-details', function () {
-        $('.collapse_details').trigger('click');
-    })
+    // $('#results').on('click', '.cpa-hotel-inline-hide-details', function () {
+    //     $('.collapse_details').trigger('click');
+    // })
+
 
     $('#results').on('click', '.hotel-inline-tab', function () {
         var location = {};
@@ -49,8 +52,25 @@ $(document).ready(function () {
 
     });
 
+    //more Images
+    $('#results').on('click', '#test', function () {
+        var template = $('#imageSlideContainerId').html();
+        var cardhtml = Mustache.render(template, element);
+    });
+
+    //آیکون جستجوی جدید
     $('#new-search').click(function () {
         $('#criteria').toggleClass('edit');
+        $('#q').val(param('q').replace(/\+/g, ' '));
+        // $('#q').attr('value', param('q').replace(/\+/g, ' '));
+        $('#q').text(param('q').replace(/\+/g, ' '));
+        $('#dateRangePicker').val(param('from'));
+        $('#dateRangePickerEnd').val(param('to'));
+        $('#na').find('option:selected').removeAttr("selected");
+        $('#na option[value=' + param('na') + ']').attr('selected', 'selected');
+        $('#nroom').find('option:selected').removeAttr("selected");
+        $('#nroom option[value=' + param('nr') + ']').attr('selected', 'selected');
+        autocomplete();
     });
 
     //pagination
@@ -62,6 +82,7 @@ $(document).ready(function () {
         window.scrollTo(0, 0);
     });
 
+    //range filter
     $('input[name="filter-price"]').on('change', function () {
         $('input[name="filter-price"]').not(this).prop('checked', false);
         if ($(this).prop('checked')) {
@@ -72,6 +93,7 @@ $(document).ready(function () {
         search();
     });
 
+    //star filter
     $('input[name="filter-category"]').on('change', function () {
         $('input[name="filter-category"]').not(this).prop('checked', false);
         if ($(this).prop('checked')) {
@@ -82,16 +104,20 @@ $(document).ready(function () {
         search();
     });
 
+    //city filter
     $('input[name="filter-city"]').on('change', function () {
         $('input[name="filter-city"]').not(this).prop('checked', false);
         if ($(this).prop('checked')) {
+            q = $(this).val()
             city = $(this).val()
         } else {
+            q = '';
             city = '';
         }
         search();
     });
 
+    //type filter
     $('input[name="filter-accomodationtype"]').on('change', function () {
         $('input[name="filter-accomodationtype"]').not(this).prop('checked', false);
         if ($(this).prop('checked')) {
@@ -102,19 +128,33 @@ $(document).ready(function () {
         search();
     });
 
+    //sort change
     $('#hotel-sort').on('change', function () {
         search();
     });
 
+    //reset all filters
+    $('#btn-deselect-all-desktop').click(function () {
+        $('input[type="checkbox"]').prop('checked', false);
+        q = ''; city = ''; star = 0; accomType = 'hotel'; flag = true; range = 0; page = 1;
+        search();
+    });
+
+    //search method
     function search(type, value) {
+        if (q == '')
+            q = param('q');
         if (city == '')
-            city = param('q');
+            city = param('city');
+
+        if(param('q') != param('city'))
+            $('.partition').css('display', 'block');
 
         $.ajax({
             url: "http://localhost:4000/api/search",
             type: 'POST',
             data: {
-                city: city, from: param('from'), to: param('to'), guest: param('na'), rooms: param('nr'),
+                q: q, city: city, from: param('from'), to: param('to'), guest: param('na'), rooms: param('nr'),
                 sort: $('#hotel-sort').val(), page: page, star: star, type: accomType, range: range
             },
             success: function (data) {
@@ -156,6 +196,7 @@ $(document).ready(function () {
         });
     }
 
+    //populate data on new search 
     function populateChangedData(data) {
         $('.search-summary strong').text('');
         $('.search-summary strong').append(data.result_num);
@@ -169,10 +210,10 @@ $(document).ready(function () {
         $('.check-in').append(data.query.from);
         $('.check-out').text('');
         $('.check-out').append(data.query.to);
-        $('.guests').text('');
-        $('.guests').append(data.query.guest + ' نفر ');
-        $('.rooms').text('');
-        $('.rooms').append(data.query.rooms + ' اتاق ');
+        $('#guests').text('');
+        $('#guests').append(data.query.guest + ' نفر ');
+        $('#rooms').text('');
+        $('#rooms').append(data.query.rooms + ' اتاق ');
         $('.hbox').children().remove();
         for (var i = 1; i <= Math.ceil((data.result_num / 10)); i++) {
             if (i == page) {
@@ -185,14 +226,6 @@ $(document).ready(function () {
 
 });
 
-
-function populateFixData(data) {
-    $('.hotel-criteria-destination').append(data.query.city);
-    $('.check-in').append(data.query.from);
-    $('.check-out').append(data.query.to);
-    $('.guests').append(data.query.guest + ' نفر ');
-    $('.rooms').append(data.query.rooms + ' اتاق ');
-}
 
 
 

@@ -187,3 +187,33 @@
         <p class="no-reviews" style="display:none">Reviews not available yet for this hotel</p>
     </div>
 </div>
+
+
+<body>
+    <div id="position-relative"></div>
+    <input type="text" name="q" id="q" autocomplete="off" />
+    <div id="autocomplete-position"></div>
+    <div class="autocomplete-suggestions" style="position: absolute; z-index: 999">
+    </div>
+    <script>
+        $(document).ready(function () {
+            element = document.getElementById('autocomplete-position');
+            var top = $('#autocomplete-position').offset().top - $('#position-relative').offset().top;
+            var rect = element.getBoundingClientRect();
+            var width = element.offsetWidth;
+            $('.autocomplete-suggestions').css('top', top).css('left', rect.left).css('width', width);
+            $('#q').change(function () {
+                $.ajax({
+                    url: 'http://localhost:3000/search',
+                    data: { term: $('#q').val() },
+                    success: function (data) {
+                        $('.autocomplete-suggestions').children().remove();
+                        data.forEach(function (element) {
+                            $('.autocomplete-suggestions').append(' <div class="autocomplete-suggestion"><p>' + element.name + '</p></div>');
+                        });
+                    }
+                });
+            });
+        })
+    </script>
+</body>
