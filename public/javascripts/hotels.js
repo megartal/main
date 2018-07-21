@@ -60,7 +60,7 @@ $(document).ready(function () {
         var topSildeTemplate = $('#imageTopSlideId').html();
         var belewSlideTemplate = $('#imagebelowSildeId').html();
         $.ajax({
-            url: "http://localhost:4000/api/images",
+            url: "/api/images",
             method: 'POST',
             data: { id: hotelId },
             success: function (data) {
@@ -223,7 +223,7 @@ $(document).ready(function () {
             $('.partition').css('display', 'block');
 
         $.ajax({
-            url: "http://localhost:4000/api/search",
+            url: "/api/search",
             type: 'POST',
             data: {
                 q: q, city: city, from: param('from'), to: param('to'), guest: param('na'), rooms: param('nr'),

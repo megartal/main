@@ -41,9 +41,9 @@ $("form").submit(function (e) {
 });
 
 //change auto complete imput
-$('#q').change(function () {
+$('#q').keydown(function () {
     $.ajax({
-        url: 'http://localhost:4000/api/city',
+        url: '/api/city',
         data: { term: $('#q').val() },
         success: function (data) {
             $('.autocomplete-suggestions').children().remove();
