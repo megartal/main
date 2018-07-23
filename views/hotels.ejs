@@ -187,19 +187,34 @@
                     <div class="autocomplete-suggestions" style="position: absolute; z-index: 999">
                     </div>
 
+                    <div id="empty-destination-box" class="hotel-search-form--error" style="position: absolute; z-index: 999">
+                        <div class="text">لطفا برای جستجو شهر با هتل مورد نظر را انتخاب کنید.</div>
+                    </div>
+
                     <div id="imageContainer"></div>
 
+                    <!-- The Modal -->
+                    <div id="myModal" class="modal">
+                        <div class="modal-content">
+                            <h1>
+                                <p>نتیجه ای برای جستجوی شما پیدا نشد!</p>
+                            </h1>
+                            <div class="field submit"></div>
+                            <button id="new_search" type="submit" style="margin-right: 70%" class="hotel-cta-main-lg">جستجوی جدید</button>
+                        </div>
+                    </div>
+        </div>
 
-                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-                    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-                    <script src="/Plugins/dateRangePicker/js/moment.min.js"></script>
-                    <script src="/Plugins/dateRangePicker/js/moment-jalaali.js"></script>
-                    <script src="/Plugins/dateRangePicker/js/daterangepicker-fa-ex.js"></script>
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
-                    <script src="/javascripts/common.js"></script>
-                    <script src="/javascripts/hotels.js"></script>
-                    <script id="cartId" type="text/template">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="/Plugins/dateRangePicker/js/moment.min.js"></script>
+        <script src="/Plugins/dateRangePicker/js/moment-jalaali.js"></script>
+        <script src="/Plugins/dateRangePicker/js/daterangepicker-fa-ex.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
+        <script src="/javascripts/common.js"></script>
+        <script src="/javascripts/hotels.js"></script>
+        <script id="cartId" type="text/template">
                         <li class="hotel-card cpa-hotel-card clearfix" id="{{hotel_id}}">
                             <div class="cpa__hotel-card__container">
                                 <div class="hotel-thumbnail cpa-hotel-thumbnail hotel-details-link" style="cursor: pointer; height: auto !important; display: block;">
@@ -298,7 +313,7 @@
                         </li>
                     </script>
 
-                    <script id="dealId" type="text/template">            
+        <script id="dealId" type="text/template">            
                         <div id="{{hotel_id}}deals" class="hotel-detail-view clearfix" style="display: none;">
                             <ul class="hotel-inline-navigation">
                                 <li class="hotel-inline-tab tab-selected" data-elem="prices">قیمت ها</li>
@@ -353,7 +368,7 @@
                             </div>
                         </div>
                     </script>
-                    <script id="OTAId" type="text/template">
+        <script id="OTAId" type="text/template">
                         <a href="{{redirect}}" target="_blank" class="hotel-deal-item-link highlight_official">
                             <div class="hotel-deal-item">
                                 <div class="room_column">
@@ -383,12 +398,12 @@
                             </div>
                         </a>
                     </script>
-                    <script id="locationId" type="text/template">
+        <script id="locationId" type="text/template">
                         <a id="btn-map">
                                 <img class="lazy-map" src="https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=744x256&maptype=roadmap&key=AIzaSyAB7f5p6Pk_wYI40avPBklUd8INjaMrlWY&format=png&markers=color:red%7Clabel:h%7C{{lat}},{{lang}}">
                         </a>
                     </script>
-                    <script id="imageSlideContainerId" type="text/template">
+        <script id="imageSlideContainerId" type="text/template">
                         <div id="detail-hero-wrapper" class="image-gallery fullscreen overlay">
                             <a data-icon="fullscreen after" class="expand" id="gallery-expand-btn"></a>
                             <a data-icon="springCleanCloseReverse after" style="opacity: 1; margin: 1em; font-size:30px;" class="close"></a>
@@ -411,7 +426,7 @@
                             </div>
                         </div>
                     </script>
-                    <script id="imageTopSlideId" type="text/template">
+        <script id="imageTopSlideId" type="text/template">
                         <a id="{{index}}" class="swiper-slide">
                                 <span class="table">
                                     <span class="table-cell">
@@ -423,7 +438,7 @@
                             </span>
                         </a>
                     </script>
-                    <script id="imagebelowSildeId" type="text/template">
+        <script id="imagebelowSildeId" type="text/template">
                         <a id="{{index}}"  class="swiper-slide">
                                 <span>
                                     <img src="{{src}}">

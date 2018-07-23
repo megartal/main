@@ -1,7 +1,7 @@
 var qChanged = false;
 var qSelected = false;
 var city = '';
-
+var base_url = "http://localhost:4000"
 //mouse over on auto complete
 $('body').on('mouseenter', '.autocomplete-suggestion', function () {
     $(this).css("background-color", "#e4e6e8");
@@ -23,10 +23,17 @@ $('body').on('click', '.autocomplete-suggestion', function () {
     $('.autocomplete-suggestions').children().remove();
 });
 
+
+
 //form submit
 $("form").submit(function (e) {
     if ($('#q').val() == '') {
-        alert('please fill the query')
+        //todo
+        element = document.getElementById('autocomplete-position');
+        var top = $('#autocomplete-position').offset().top - $('#position-fixer').offset().top;
+        var rect = element.getBoundingClientRect();
+        var width = element.offsetWidth;
+        $('#empty-destination-box').css('top', top).css('left', rect.left).css('display', 'block');
         return false;
     } else {
         if (param('city')) {
@@ -43,7 +50,7 @@ $("form").submit(function (e) {
 //change auto complete imput
 $('#q').keydown(function () {
     $.ajax({
-        url: '/api/city',
+        url: base_url + '/api/city',
         data: { term: $('#q').val() },
         success: function (data) {
             $('.autocomplete-suggestions').children().remove();

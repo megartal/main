@@ -1,4 +1,5 @@
 var i = 0;
+var base_url = "http://localhost:4000";
 $(document).ready(function () {
     var q = '', city = '', star = 0, accomType = 'hotel', flag = true, range = 0, page = 1;
     datePicker();
@@ -60,7 +61,7 @@ $(document).ready(function () {
         var topSildeTemplate = $('#imageTopSlideId').html();
         var belewSlideTemplate = $('#imagebelowSildeId').html();
         $.ajax({
-            url: "/api/images",
+            url: base_url + "/api/images",
             method: 'POST',
             data: { id: hotelId },
             success: function (data) {
@@ -128,6 +129,11 @@ $(document).ready(function () {
         while($(this).attr('id') != $('#detail-hero .swiper-slide:nth-child(1)').attr('id')){
             slideRight();
         }
+    });
+
+    //modal new search
+    $('#new_search').click(function(){
+        window.location.href = '/';
     });
 
     //آیکون جستجوی جدید
@@ -223,7 +229,7 @@ $(document).ready(function () {
             $('.partition').css('display', 'block');
 
         $.ajax({
-            url: "/api/search",
+            url: base_url +  "/api/search",
             type: 'POST',
             data: {
                 q: q, city: city, from: param('from'), to: param('to'), guest: param('na'), rooms: param('nr'),
@@ -261,7 +267,8 @@ $(document).ready(function () {
                     });
                 } else {
                     $('#results').children().remove();
-                    alert('there is no result');
+                    $('#myModal').css('display', 'block');
+                    // var span = $(".close")[0];
                 }
 
             }

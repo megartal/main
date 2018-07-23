@@ -3,9 +3,8 @@ $(document).ready(function () {
     datePicker();
     autocomplete();
     $('.destination').click(function(){
-        var hotel = $(this).find('p').text();
         var city = $(this).find('h4').text();
-        $('#q').attr('value', hotel);
+        $('#q').attr('value', city);
         $('#cityId').attr('value', city);
         $('#submit-mysearch').trigger('click');
     });
