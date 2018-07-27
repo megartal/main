@@ -8,7 +8,7 @@
      font-family: 'B Yekan';
      src: local('?'),
      local('B Yekan'),
-     url('http://awebfont.ir/services/fonts/683a5dddcff7f1cbb08d964cc275cb50ce7840291901931.woff') format('woff');
+     url('/font/BYekan.woff') format('woff');
 font-weight: normal;
 font-style: normal;
 }
@@ -47,7 +47,8 @@ body {
     white-space: nowrap;
 }
 .Header-1_1R8 {
-    background-color: #4abdac;
+    background-color: #f3f2f5;
+    margin-bottom: -2em;
 }
 .white-text{
     color:#fff !important;
@@ -63,11 +64,6 @@ body {
     background-color:#444;
 }
 
-.bpk-link-143_C {
-
-    color: #fff !important;
-
-}
 #copyright {
     width: 100%;
     text-align: center;
@@ -122,4 +118,32 @@ body {
     padding: 20px;
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
+}
+
+.alert {
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+    opacity: 1;
+    transition: opacity 0.6s;
+    margin-bottom: 15px;
+}
+
+.alert.success {background-color: #fff;}
+.alert.info {background-color: #2196F3;}
+.alert.warning {background-color: #ff9800;}
+
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.closebtn:hover {
+    color: black;
 }

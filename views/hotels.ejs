@@ -7,14 +7,14 @@
         <noscript>
             <div class="no-js-msg">
                 <p>
-                    aratrip needs JavaScript to work. It looks like your browser doesn't support JavaScript, or has it turned off. Please try
+                    jootrip needs JavaScript to work. It looks like your browser doesn't support JavaScript, or has it turned off. Please try
                     again with JavaScript support.
                 </p>
             </div>
         </noscript>
         <div id="pagewrap" class="clearfix">
             <div class="wrap h1-heading">
-                <h1 id="h1-heading">هتل ها | آراتریپ - با استفاده از آراتریپ هتل ها را جستجو و مقايسه کنيد.</h1>
+                <h1 id="h1-heading">هتل ها | جوتریپ - با استفاده از جوتریپ هتل ها را جستجو و مقايسه کنيد.</h1>
             </div>
 
             <%- include navbar.ejs %>
@@ -180,15 +180,11 @@
 
                     <div class=" legal-info">
                         <p id="copyright" class="asian-lang-font-reset">
-                            <span> aratrip &copy; 2018-2018</span>
+                            <span> jootrip.com &copy; 2018-2018</span>
                         </p>
                     </div>
 
                     <div class="autocomplete-suggestions" style="position: absolute; z-index: 999">
-                    </div>
-
-                    <div id="empty-destination-box" class="hotel-search-form--error" style="position: absolute; z-index: 999">
-                        <div class="text">لطفا برای جستجو شهر با هتل مورد نظر را انتخاب کنید.</div>
                     </div>
 
                     <div id="imageContainer"></div>
@@ -318,7 +314,7 @@
                             <ul class="hotel-inline-navigation">
                                 <li class="hotel-inline-tab tab-selected" data-elem="prices">قیمت ها</li>
                                 <li class="hotel-inline-tab" data-elem="desc">توضیحات</li>
-                                <li class="hotel-inline-tab" data-hotel-id="{{hotel_id}}" data-lat="{{location.lat}}" data-lang="{{location.lang}}" data-elem="location">موقعیت</li>
+                                <li class="hotel-inline-tab mapClass" data-hotel-id="{{hotel_id}}" data-lat="{{location.lat}}" data-lang="{{location.lang}}" data-elem="location">موقعیت</li>
                             </ul>
 
                             <div class="hotel-inline-item hotel-inline-prices" style="display: block;">

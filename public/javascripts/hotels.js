@@ -1,6 +1,6 @@
 var i = 0;
-// var base_url = "http://localhost:4000";
-var base_url = "";
+var base_url = "http://localhost:4000";
+// var base_url = "";
 $(document).ready(function () {
     var q = '', city = '', star = 0, accomType = 'hotel', flag = true, range = 0, page = 1;
     datePicker();
@@ -81,6 +81,12 @@ $(document).ready(function () {
                 $('#detail-hero-thumbnail .swiper-slide:nth-child(1)').addClass('active-thumbnail');
             }
         });
+    });
+
+    //مشاهده نقشه
+    $('#results').on('click', '.hotel-geo', function(){
+        $(this).parent().parent().parent().find('.cpa__hotel-card__main-cta').trigger('click');
+        $(this).parent().parent().parent().parent().parent().parent().parent().find('.mapClass').trigger('click');
     });
 
     //close images
