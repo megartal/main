@@ -140,7 +140,7 @@ $(document).ready(function () {
 
     //modal new search
     $('#new_search').click(function(){
-        window.location.href = '/';
+        $('#myModal').css('display', 'none');;
     });
 
     //آیکون جستجوی جدید
