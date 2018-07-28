@@ -26,6 +26,7 @@ app.use('/cities', require('./routes/cities'));
 app.use('/about', require('./routes/about'));
 app.use('/help', require('./routes/help'));
 app.use('/contact', require('./routes/contact'));
+app.use('/google87c231b64e9be116.html', require('./routes/google'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
