@@ -1,6 +1,6 @@
 var i = 0;
-// var base_url = "http://localhost:4000";
-var base_url = "";
+var base_url = "http://localhost:4000";
+// var base_url = "";
 $(document).ready(function () {
     var q = '', city = '', star = 0, accomType = 'hotel', flag = true, range = 0, page = 1;
     datePicker();
