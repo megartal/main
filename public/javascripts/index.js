@@ -2,8 +2,8 @@ $(document).ready(function () {
     setDefultDate();
     datePicker();
     autocomplete();
-    $('.destination').click(function(){
-        var hotel = $(this).find('p').text();
+    $('.city').click(function(){
+        var hotel = $(this).find('a').attr('data-q');
         var city = $(this).find('h4').text();
         $('#q').attr('value', hotel);
         $('#cityId').attr('value', city);

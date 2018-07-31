@@ -1,8 +1,8 @@
 var qChanged = false;
 var qSelected = false;
 var city = '';
-// var base_url = "http://localhost:4000"
-var base_url = "";
+var base_url = "http://localhost:4000"
+// var base_url = "";
 //mouse over on auto complete
 $('body').on('mouseenter', '.autocomplete-suggestion', function () {
     $(this).css("background-color", "#e4e6e8");
@@ -39,9 +39,9 @@ $("form").submit(function (e) {
         $('.alert').css('opacity', '1');
         return false;
     } else {
-        if (param('city')) {
-            $('#cityId').val(param('city'));
-        }
+        // if (param('city')) {
+        //     $('#cityId').val(param('city'));
+        // }
         if (qChanged && !qSelected) {
             $('#q').val($('.autocomplete-suggestions').children().first('.autocomplete-suggestion').find('strong').text());
             $('#cityId').val($('.autocomplete-suggestions').children().first('.autocomplete-suggestion').attr('id'));
@@ -91,6 +91,7 @@ function datePicker() {
         clearLabel: 'Clear',
         autoUpdateInput: !!(dateFrom && dateTo),
         minDate: moment(),
+        maxDate: moment().add(30, 'days'),
         autoApply: true,
         opens: isRtl ? 'left' : 'right',
         locale: {
