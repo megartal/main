@@ -3,7 +3,7 @@ $(document).ready(function () {
     datePicker();
     autocomplete();
     $('.city').click(function(){
-        var city = $(this).find('h4').text();
+        var city = $(this).find('a').attr('data-q');
         $('#q').attr('value', city);
         $('#cityId').attr('value', city);
         $('#submit-mysearch').trigger('click');

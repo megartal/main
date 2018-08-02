@@ -39,9 +39,11 @@ $("form").submit(function (e) {
         $('.alert').css('opacity', '1');
         return false;
     } else {
-        // if (param('city')) {
-        //     $('#cityId').val(param('city'));
-        // }
+        if(!qChanged && !qSelected){
+            if (param('city')) {
+                $('#cityId').val(param('city'));
+            }
+        }
         if (qChanged && !qSelected) {
             $('#q').val($('.autocomplete-suggestions').children().first('.autocomplete-suggestion').find('strong').text());
             $('#cityId').val($('.autocomplete-suggestions').children().first('.autocomplete-suggestion').attr('id'));
