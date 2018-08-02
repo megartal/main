@@ -1,6 +1,6 @@
 var i = 0;
-// var base_url = "http://localhost:4000";
-var base_url = "";
+var base_url = "http://localhost:4000";
+// var base_url = "";
 $(document).ready(function () {
     var q = '', city = '', star = 0, accomType = 'hotel', flag = true, range = 0, page = 1;
     datePicker();
@@ -84,7 +84,7 @@ $(document).ready(function () {
     });
 
     //مشاهده نقشه
-    $('#results').on('click', '.hotel-geo', function(){
+    $('#results').on('click', '.hotel-geo', function () {
         $(this).parent().parent().parent().find('.cpa__hotel-card__main-cta').trigger('click');
         $(this).parent().parent().parent().parent().parent().parent().parent().find('.mapClass').trigger('click');
     });
@@ -133,13 +133,13 @@ $(document).ready(function () {
 
     //thumbnail image selected
     $('body').on('click', '.swiper-slide', function () {
-        while($(this).attr('id') != $('#detail-hero .swiper-slide:nth-child(1)').attr('id')){
+        while ($(this).attr('id') != $('#detail-hero .swiper-slide:nth-child(1)').attr('id')) {
             slideRight();
         }
     });
 
     //modal new search
-    $('#new_search').click(function(){
+    $('#new_search').click(function () {
         $('#myModal').css('display', 'none');;
     });
 
@@ -236,7 +236,7 @@ $(document).ready(function () {
             $('.partition').css('display', 'block');
 
         $.ajax({
-            url: base_url +  "/api/search",
+            url: base_url + "/api/search",
             type: 'POST',
             data: {
                 q: q, city: city, from: param('from'), to: param('to'), guest: param('na'), rooms: param('nr'),
@@ -267,8 +267,8 @@ $(document).ready(function () {
                             ota.hotel_id = element.hotel_id;
                             var otaHtml = Mustache.render(otaTemplate, ota);
                             $(hotelId + 'ota').append(otaHtml);
-                            ota.price_info.rooms.forEach(function (roomName) {
-                                $(hotelId + ota.ota.id).append('<div class="room_type">' + roomName + '</div>')
+                            ota.price_info.rooms.forEach(function (room) {
+                                $(hotelId + ota.ota.id).append('<div class="room_type">'+ ''+ room.num +' اتاق "'+room.name +'"' +'</div>')
                             });
                         });
                     });
@@ -281,6 +281,26 @@ $(document).ready(function () {
             }
         });
     }
+
+    // //redirect
+    // $('body').on('click', '.hotel-deal-item-link', function () {
+    //     var template = $('#redirectModal').html();
+    //     var url = $(this).attr('data-url');
+    //     var logo = $(this).find('.partner-logo').css('background-image');
+    //     var html = Mustache.render(template, { logo: logo });
+    //     $('#redirectModalContent').append(html);
+    //     $('#redirectModalContent').css('display', 'block');
+    //     $('#redirectURL').attr('href', url);
+    //     setTimeout(function () {
+    //         $('#redirectURL')[0].click()
+    //     }, 4000);
+    // });
+
+    // //new search
+    // $('body').on('click', '#new_search', function(){
+    //     $('#redirectModalContent').children().remove();
+    //     $('#redirectModalContent').css('display', 'none');
+    // });
 
     //populate data on new search 
     function populateChangedData(data) {

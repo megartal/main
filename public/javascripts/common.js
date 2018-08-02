@@ -1,8 +1,8 @@
 var qChanged = false;
 var qSelected = false;
 var city = '';
-// var base_url = "http://localhost:4000"
-var base_url = "";
+var base_url = "http://localhost:4000"
+// var base_url = "";
 //mouse over on auto complete
 $('body').on('mouseenter', '.autocomplete-suggestion', function () {
     $(this).css("background-color", "#e4e6e8");
