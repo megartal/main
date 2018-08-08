@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="fa">
 <header>
     <title>جستجوی هتل مناسب – انتخاب ارزان ترین هتل – انتقال به سایت رزرو هتل | جوتریپ </title>
     <%- include header.ejs %>
@@ -195,9 +195,9 @@
                 <!-- The Modal -->
                 <div id="myModal" class="modal">
                     <div class="modal-content">
-                        <h1>
+                        <h3>
                             <p>نتیجه ای برای جستجوی شما پیدا نشد!</p>
-                        </h1>
+                        </h3>
                         <div class="field submit"></div>
                         <button id="new_search" type="submit" style="margin-right: 70%" class="hotel-cta-main-lg">جستجوی جدید</button>
                     </div>
@@ -286,7 +286,7 @@
                                             <a class="hotel-details hotel-details-link">
                                                 <div class="hotel-cpa-popular-with">
                                                     <strong> {{address}} </strong>
-                                                    <img src="" alt="">
+                                                    <!-- <img src="" alt=""> -->
                                                 </div>
                                                 <!-- <div class="hotel-cpa-reviews">
                                                     <p>"{{amenity3}}"</p>
@@ -461,7 +461,7 @@
                                 <span class="table">
                                     <span class="table-cell">
                                         <span class="detail-hero-img-wrapper">
-                                            <img class="lazy" src="/images/hotels/{{src}}">
+                                            <img class="lazy" src="/images/hotels/{{src}}" alt="{{caption}}">
                                             <span class="img-attribution">{{caption}}</span>
                                     </span>
                                 </span>

@@ -140,7 +140,8 @@ $(document).ready(function () {
 
     //modal new search
     $('#new_search').click(function () {
-        $('#myModal').css('display', 'none');;
+        $('#myModal').css('display', 'none');
+        location.reload();
     });
 
     //آیکون جستجوی جدید
