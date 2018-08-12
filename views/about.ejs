@@ -1,65 +1,91 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="fa" prefix="og: http://ogp.me/ns#">
 
-<head profile="http://gmpg.org/xfn/11">
-    <header>
-        <title>موتور جستجوی سایتهای رزرو هتل | جوتریپ</title>
-        <%- include header.ejs %>
-    </header>
+<header>
+    <title>موتور جستجوی سایتهای رزرو هتل | جوتریپ</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123350658-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-    <body dir="rtl" id="category-hotels" class="lang-en page-hotelsesi action-hotelsindex   default-layout scaffold-font-size   spring-clean month-view-spring-clean ">
-        <div id="position-fixer"></div>
-        <noscript>
-            <div class="no-js-msg">
-                <p>
-                    jootrip needs JavaScript to work. It looks like your browser doesn't support JavaScript, or has it turned off. Please try
-                    again with JavaScript support.
-                </p>
-            </div>
-        </noscript>
-        <div id="pagewrap" class="clearfix">
+        gtag('config', 'UA-123350658-1');
+    </script>
+    <meta charset="utf-8">
+    <meta name="viewport"="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible"="IE=10" />
+    <meta http-equiv="-Language"="fa" />
+    <meta name="theme-color"="#ffffff" />
+    <meta name="msapplication-TileColor"="#21c4d9" />
+    <script>window['start-time'] = new Date().getTime();</script>
+    <link href="/Plugins/dateRangePicker/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="/Plugins/dateRangePicker/css/daterangepicker.css" rel="stylesheet" />
+    <link href="/Plugins/dateRangePicker/css/datepicker-theme.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="/Styles/core.css" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!-- media queries css -->
+    <link id="cssRTL" rel="stylesheet" href="/Styles/search-results.css">
+    <link rel="stylesheet" href="/Styles/search-controls.css">
+    <link rel="stylesheet" href="/Styles/main.css">
+    <link href="/Styles/homepage.css" rel="stylesheet" />
+    <link href="/Styles/destinations.css" rel="stylesheet" />
+    <link href="/Styles/custom.css" rel="stylesheet" />
+</header>
 
-            <%- include navbar.ejs %>
+<body dir="rtl" id="category-hotels" class="lang-en page-hotelsesi action-hotelsindex   default-layout scaffold-font-size   spring-clean month-view-spring-clean ">
+    <div id="position-fixer"></div>
+    <noscript>
+        <div class="no-js-msg">
+            <p>
+                jootrip needs JavaScript to work. It looks like your browser doesn't support JavaScript, or has it turned off. Please try
+                again with JavaScript support.
+            </p>
+        </div>
+    </noscript>
+    <div id="pagewrap" class="clearfix">
 
-                <!--  body -->
+        <%- include navbar.ejs %>
 
-                <!-- START  -->
-                <main class="wrap content">
-                    <article class="article">
-                        <header class="single-post__header">
-                        </header>
+            <!--  body -->
 
-                        <img src="/images/logo/jootrip.jpg" alt="jootrip">
-                        <figure class="wp-block-embed-youtube wp-block-embed is-type-video is-provider-youtube">
-                            <!-- <div class="jetpack-video-wrapper">
+            <!-- START  -->
+            <main class="wrap content">
+                <article class="article">
+                    <header class="single-post__header">
+                    </header>
+
+                    <img src="/images/logo/jootrip.jpg" alt="jootrip">
+                    <figure class="wp-block-embed-youtube wp-block-embed is-type-video is-provider-youtube">
+                        <!-- <div class="jetpack-video-wrapper">
                                     <iframe src="https://www.youtube.com/" frameborder="0" allow="autoplay; encrypted-media"
                                         allowfullscreen="" data-ratio="0.5629770992366412" data-width="1048" data-height="590"
                                         style="display: block; margin: 0px; width: 1000px; height: 562.977px;"></iframe>
                                 </div> -->
-                        </figure>
+                    </figure>
 
-                        <p>جوتریپ جایی هست که شما می‌توانید در آن مناسب‌ترین هتل با ارزان‌ترین قیمت را در بین سایت‌های رزرواسیون
-                            هتل پیدا کنید. در واقع با افزایش تعداد سایت‌های رزرواسیون هتل در ایران کاربران ایرانی نیاز به
-                            سرویس جدیدی هم برای شناختن سایت‌های رزرواسیون معتبر و جدید و هم برای یافتن بهترین قیمت برای هتل
-                            مورد نظرشان پیدا کرده اند. جوتریپ با هدف معرفی هتل‌های موجود در ایران و سایت های رزرواسیون با
-                            ارائه‌ی شفاف قیمت‌ها به کاربران از سال 1397 تاسیس شده است.</p>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                    </article>
-                </main>
+                    <p>جوتریپ جایی هست که شما می‌توانید در آن مناسب‌ترین هتل با ارزان‌ترین قیمت را در بین سایت‌های رزرواسیون
+                        هتل پیدا کنید. در واقع با افزایش تعداد سایت‌های رزرواسیون هتل در ایران کاربران ایرانی نیاز به سرویس
+                        جدیدی هم برای شناختن سایت‌های رزرواسیون معتبر و جدید و هم برای یافتن بهترین قیمت برای هتل مورد نظرشان
+                        پیدا کرده اند. جوتریپ با هدف معرفی هتل‌های موجود در ایران و سایت های رزرواسیون با ارائه‌ی شفاف قیمت‌ها
+                        به کاربران از سال 1397 تاسیس شده است.</p>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                </article>
+            </main>
 
+    </div>
+    <!-- END  -->
+    <!--  body -->
+    <%- include footer.ejs %>
+        <div class=" legal-info">
+            <p id="copyright" class="asian-lang-font-reset">
+                <span> jootrip.com &copy; 2018-2018</span>
+            </p>
         </div>
-        <!-- END  -->
-        <!--  body -->
-        <%- include footer.ejs %>
-            <div class=" legal-info">
-                <p id="copyright" class="asian-lang-font-reset">
-                    <span> jootrip.com &copy; 2018-2018</span>
-                </p>
-            </div>
-            </div>
-    </body>
+        </div>
+</body>
 
 </html>

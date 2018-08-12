@@ -1,230 +1,256 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="fa" prefix="og: http://ogp.me/ns#">
 
-<head profile="http://gmpg.org/xfn/11">
-    <header>
-        <%- include header.ejs %>
-        <title>پیشنهاد مناسب ترین و ارزان ترین هتل در همه شهرهای ایران | جوتریپ </title>
-        <meta name="description" content="شهر یا هتل مورد نظر را انتخاب کنید و قیمت را در تمامی سایتهای رزرو هتل مشاهده کنید و بهترین پیشنهاد با بیشترین تخفیف را انتخاب کنید.">
-    </header>
+<header>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123350658-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-    <body dir="rtl" id="category-hotels" class="lang-en page-hotelsesi action-hotelsindex   default-layout scaffold-font-size   spring-clean month-view-spring-clean ">
-        <div id="position-fixer"></div>
-        <noscript>
-            <div class="no-js-msg">
-                <p>
-                    jootrip needs JavaScript to work. It looks like your browser doesn't support JavaScript, or has it turned off. Please try
-                    again with JavaScript support.
-                </p>
-            </div>
-        </noscript>
-        <div id="pagewrap" class="clearfix">
+        gtag('config', 'UA-123350658-1');
+    </script>
+    <meta charset="utf-8">
+    <meta name="viewport"="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible"="IE=10" />
+    <meta http-equiv="-Language"="fa" />
+    <meta name="theme-color"="#ffffff" />
+    <meta name="msapplication-TileColor"="#21c4d9" />
+    <script>window['start-time'] = new Date().getTime();</script>
+    <link href="/Plugins/dateRangePicker/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="/Plugins/dateRangePicker/css/daterangepicker.css" rel="stylesheet" />
+    <link href="/Plugins/dateRangePicker/css/datepicker-theme.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="/Styles/core.css" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!-- media queries css -->
+    <link id="cssRTL" rel="stylesheet" href="/Styles/search-results.css">
+    <link rel="stylesheet" href="/Styles/search-controls.css">
+    <link rel="stylesheet" href="/Styles/main.css">
+    <link href="/Styles/homepage.css" rel="stylesheet" />
+    <link href="/Styles/destinations.css" rel="stylesheet" />
+    <link href="/Styles/custom.css" rel="stylesheet" />
+    <title>پیشنهاد مناسب ترین و ارزان ترین هتل در همه شهرهای ایران | جوتریپ </title>
+    <meta name="description" content="شهر یا هتل مورد نظر را انتخاب کنید و قیمت را در تمامی سایتهای رزرو هتل مشاهده کنید و بهترین پیشنهاد با بیشترین تخفیف را انتخاب کنید.">
+</header>
 
-            <%- include navbar.ejs %>
-                <!--  body -->
+<body dir="rtl" id="category-hotels" class="lang-en page-hotelsesi action-hotelsindex   default-layout scaffold-font-size   spring-clean month-view-spring-clean ">
+    <div id="position-fixer"></div>
+    <noscript>
+        <div class="no-js-msg">
+            <p>
+                jootrip needs JavaScript to work. It looks like your browser doesn't support JavaScript, or has it turned off. Please try
+                again with JavaScript support.
+            </p>
+        </div>
+    </noscript>
+    <div id="pagewrap" class="clearfix">
 
-                <!-- START  -->
-                <div id="hotel--wrap" class="wrap clearfix">
+        <%- include navbar.ejs %>
+            <!--  body -->
 
-                    <div id="search-form-wrapper" class="hotel-search-form-wrapper springClean has_header show" style="background-image:url('/images/background/testpic (17).jpg');background-position:center;background-size:cover">
-                        <%- include search-form.ejs %>
-                    </div>
+            <!-- START  -->
+            <div id="hotel--wrap" class="wrap clearfix">
 
-                    <div id="destination-wrapper" class="destinations_wrapper">
-                        <div id="destination" class="destinations">
-                            <ul class="clearfix">
-                                <li class="destination city" id="destination_">
-                                    <a href="#" data-q="تبریز">
-                                        <div class="destination_thumb" style="background-image:url('/images/cities/tabriz-1.jpg')" title="رزرو هتل تبریز - لیست هتل های شهر تبریز"></div>
-                                        <div class="destination_cta" data-icon="forwardBlue after">
-                                            <h4>هتل های تبریز </h4>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="destination city" id="destination_">
-                                    <a href="#" data-q="تهران">
-                                        <div class="destination_thumb" style="background-image:url('/images/cities/tehran-1.jpg')" title="رزرو هتل تهران - لیست هتل های شهر تهران"></div>
-                                        <div class="destination_cta" data-icon="forwardBlue after">
-                                            <h4>هتل های تهران</h4>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="destination city" id="destination_">
-                                    <a href="#" data-q="اصفهان">
-                                        <div class="destination_thumb" style="background-image:url('/images/cities/esfahan-1.jpg')" title="رزرو هتل اصفهان - لیست هتل های شهر اصفهان"></div>
-                                        <div class="destination_cta" data-icon="forwardBlue after">
-                                            <h4>هتل های اصفهان</h4>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="destination city" id="destination_">
-                                    <a href="#" data-q="شیراز">
-                                        <div class="destination_thumb" style="background-image:url('/images/cities/shiraz-1.jpg')" title="رزرو هتل شیراز - لیست هتل های شهر شیراز"></div>
-                                        <div class="destination_cta" data-icon="forwardBlue after">
-                                            <h4>هتل های شیراز</h4>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="destination city" id="destination_">
-                                    <a href="#" data-q="مشهد">
-                                        <div class="destination_thumb" style="background-image:url('/images/cities/mashhad-1.jpg')" title="رزرو هتل مشهد - لیست هتل های شهر مشهد"></div>
-                                        <div class="destination_cta" data-icon="forwardBlue after">
-                                            <h4>هتل های مشهد</h4>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="destination city" id="destination_">
-                                    <a href="#" data-q="یزد">
-                                        <div class="destination_thumb" style="background-image:url('/images/cities/yazd-1.jpg')" title="رزرو هتل یزد - لیست هتل های شهر یزد"></div>
-                                        <div class="destination_cta" data-icon="forwardBlue after">
-                                            <h4>هتل های یزد</h4>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="destination city" id="destination_">
-                                    <a href="#" data-q="کیش">
-                                        <div class="destination_thumb" style="background-image:url('/images/cities/kish-1.jpg')" title="رزرو هتل کیش - لیست هتل های شهر کیش"></div>
-                                        <div class="destination_cta" data-icon="forwardBlue after">
-                                            <h4>هتل های کیش</h4>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="destination city" id="destination_">
-                                    <a href="#" data-q="قشم">
-                                        <div class="destination_thumb" style="background-image:url('/images/cities/gheshm-1.jpg')" title="رزرو هتل قشم - لیست هتل های شهر قشم"></div>
-                                        <div class="destination_cta" data-icon="forwardBlue after">
-                                            <h4>هتل های قشم</h4>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="destination city" id="destination_">
-                                    <a href="#" data-q="قم">
-                                        <div class="destination_thumb" style="background-image:url('/images/cities/ghom-1.jpg')" title="رزرو هتل قم - لیست هتل های شهر قم"></div>
-                                        <div class="destination_cta" data-icon="forwardBlue after">
-                                            <h4>هتل های قم</h4>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="destination city" id="destination_">
-                                    <a href="#" data-q="همدان">
-                                        <div class="destination_thumb" style="background-image:url('/images/cities/hamedan-1.jpg')" title="رزرو هتل همدان - لیست هتل های شهر همدان"></div>
-                                        <div class="destination_cta" data-icon="forwardBlue after">
-                                            <h4>هتل های همدان</h4>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="destination city" id="destination_">
-                                    <a href="#" data-q="ساری">
-                                        <div class="destination_thumb" style="background-image:url('/images/cities/sari-1.jpg')" title="رزرو هتل ساری - لیست هتل های شهر ساری"></div>
-                                        <div class="destination_cta" data-icon="forwardBlue after">
-                                            <h4>هتل های ساری</h4>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="destination city" id="destination_">
-                                    <a href="#" data-q="ارومیه">
-                                        <div class="destination_thumb" style="background-image:url('/images/cities/urum-1.jpg')" title="رزرو هتل ارومیه - لیست هتل های شهر ارومیه"></div>
-                                        <div class="destination_cta" data-icon="forwardBlue after">
-                                            <h4>هتل های ارومیه</h4>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="destination city" id="destination_">
-                                    <a href="#" data-q="اردبیل">
-                                        <div class="destination_thumb" style="background-image:url('/images/cities/ardabil-1.jpg')" title="رزرو هتل اردبیل - لیست هتل های شهر اردبیل"></div>
-                                        <div class="destination_cta" data-icon="forwardBlue after">
-                                            <h4>هتل های اردبیل</h4>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="destination city" id="destination_">
-                                    <a href="#" data-q="زنجان">
-                                        <div class="destination_thumb" style="background-image:url('/images/cities/zanjan-1.jpg')" title="رزرو هتل زنجان - لیست هتل های شهر زنجان"></div>
-                                        <div class="destination_cta" data-icon="forwardBlue after">
-                                            <h4>هتل های زنجان</h4>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="destination city" id="destination_">
-                                    <a href="#" data-q="رشت">
-                                        <div class="destination_thumb" style="background-image:url('/images/cities/rasht-1.jpg')" title="رزرو هتل رشت - لیست هتل های شهر رشت"></div>
-                                        <div class="destination_cta" data-icon="forwardBlue after">
-                                            <h4>هتل های رشت</h4>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="destination city" id="destination_">
-                                    <a href="#" data-q="کرمانشاه">
-                                        <div class="destination_thumb" style="background-image:url('/images/cities/kermanshah-1.jpg')" title="رزرو هتل کرمانشاه - لیست هتل های شهر کرمانشاه"></div>
-                                        <div class="destination_cta" data-icon="forwardBlue after">
-                                            <h4>هتل های کرمانشاه</h4>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="destination city" id="destination_">
-                                    <a href="#" data-q="بروجرد">
-                                        <div class="destination_thumb" style="background-image:url('/images/cities/brujerd-1.jpg')" title="رزرو هتل بروجرد - لیست هتل های شهر بروجرد"></div>
-                                        <div class="destination_cta" data-icon="forwardBlue after">
-                                            <h4>هتل های بروجرد</h4>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="destination city" id="destination_">
-                                    <a href="#" data-q="چابهار">
-                                        <div class="destination_thumb" style="background-image:url('/images/cities/chabahar-1.jpg')" title="رزرو هتل چابهار - لیست هتل های شهر چابهار"></div>
-                                        <div class="destination_cta" data-icon="forwardBlue after">
-                                            <h4>هتل های چابهار</h4>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="destination city" id="destination_">
-                                    <a href="#" data-q="رامسر">
-                                        <div class="destination_thumb" style="background-image:url('/images/cities/ramsar-1.jpg')" title="رزرو هتل رامسر - لیست هتل های شهر رامسر"></div>
-                                        <div class="destination_cta" data-icon="forwardBlue after">
-                                            <h4>هتل های رامسر</h4>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="destination city" id="destination_">
-                                    <a href="#" data-q="چالوس">
-                                        <div class="destination_thumb" style="background-image:url('/images/cities/chaloos-1.jpg')" title="رزرو هتل چالوس - لیست هتل های شهر چالوس"></div>
-                                        <div class="destination_cta" data-icon="forwardBlue after">
-                                            <h4>هتل های چالوس</h4>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="destination city" id="destination_">
-                                    <a href="#" data-q="شهرکرد">
-                                        <div class="destination_thumb" style="background-image:url('/images/cities/shahrkord-1.jpg')" title="رزرو هتل شهرکرد - لیست هتل های شهر شهرکرد"></div>
-                                        <div class="destination_cta" data-icon="forwardBlue after">
-                                            <h4>هتل های شهرکرد</h4>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+                <div id="search-form-wrapper" class="hotel-search-form-wrapper springClean has_header show" style="background-image:url('/images/background/testpic (17).jpg');background-position:center;background-size:cover">
+                    <%- include search-form.ejs %>
+                </div>
+
+                <div id="destination-wrapper" class="destinations_wrapper">
+                    <div id="destination" class="destinations">
+                        <ul class="clearfix">
+                            <li class="destination city" id="destination_">
+                                <a href="#" data-q="تبریز">
+                                    <div class="destination_thumb" style="background-image:url('/images/cities/tabriz-1.jpg')" title="رزرو هتل تبریز - لیست هتل های شهر تبریز"></div>
+                                    <div class="destination_cta" data-icon="forwardBlue after">
+                                        <h4>هتل های تبریز </h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="destination city" id="destination_">
+                                <a href="#" data-q="تهران">
+                                    <div class="destination_thumb" style="background-image:url('/images/cities/tehran-1.jpg')" title="رزرو هتل تهران - لیست هتل های شهر تهران"></div>
+                                    <div class="destination_cta" data-icon="forwardBlue after">
+                                        <h4>هتل های تهران</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="destination city" id="destination_">
+                                <a href="#" data-q="اصفهان">
+                                    <div class="destination_thumb" style="background-image:url('/images/cities/esfahan-1.jpg')" title="رزرو هتل اصفهان - لیست هتل های شهر اصفهان"></div>
+                                    <div class="destination_cta" data-icon="forwardBlue after">
+                                        <h4>هتل های اصفهان</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="destination city" id="destination_">
+                                <a href="#" data-q="شیراز">
+                                    <div class="destination_thumb" style="background-image:url('/images/cities/shiraz-1.jpg')" title="رزرو هتل شیراز - لیست هتل های شهر شیراز"></div>
+                                    <div class="destination_cta" data-icon="forwardBlue after">
+                                        <h4>هتل های شیراز</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="destination city" id="destination_">
+                                <a href="#" data-q="مشهد">
+                                    <div class="destination_thumb" style="background-image:url('/images/cities/mashhad-1.jpg')" title="رزرو هتل مشهد - لیست هتل های شهر مشهد"></div>
+                                    <div class="destination_cta" data-icon="forwardBlue after">
+                                        <h4>هتل های مشهد</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="destination city" id="destination_">
+                                <a href="#" data-q="یزد">
+                                    <div class="destination_thumb" style="background-image:url('/images/cities/yazd-1.jpg')" title="رزرو هتل یزد - لیست هتل های شهر یزد"></div>
+                                    <div class="destination_cta" data-icon="forwardBlue after">
+                                        <h4>هتل های یزد</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="destination city" id="destination_">
+                                <a href="#" data-q="کیش">
+                                    <div class="destination_thumb" style="background-image:url('/images/cities/kish-1.jpg')" title="رزرو هتل کیش - لیست هتل های شهر کیش"></div>
+                                    <div class="destination_cta" data-icon="forwardBlue after">
+                                        <h4>هتل های کیش</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="destination city" id="destination_">
+                                <a href="#" data-q="قشم">
+                                    <div class="destination_thumb" style="background-image:url('/images/cities/gheshm-1.jpg')" title="رزرو هتل قشم - لیست هتل های شهر قشم"></div>
+                                    <div class="destination_cta" data-icon="forwardBlue after">
+                                        <h4>هتل های قشم</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="destination city" id="destination_">
+                                <a href="#" data-q="قم">
+                                    <div class="destination_thumb" style="background-image:url('/images/cities/ghom-1.jpg')" title="رزرو هتل قم - لیست هتل های شهر قم"></div>
+                                    <div class="destination_cta" data-icon="forwardBlue after">
+                                        <h4>هتل های قم</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="destination city" id="destination_">
+                                <a href="#" data-q="همدان">
+                                    <div class="destination_thumb" style="background-image:url('/images/cities/hamedan-1.jpg')" title="رزرو هتل همدان - لیست هتل های شهر همدان"></div>
+                                    <div class="destination_cta" data-icon="forwardBlue after">
+                                        <h4>هتل های همدان</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="destination city" id="destination_">
+                                <a href="#" data-q="ساری">
+                                    <div class="destination_thumb" style="background-image:url('/images/cities/sari-1.jpg')" title="رزرو هتل ساری - لیست هتل های شهر ساری"></div>
+                                    <div class="destination_cta" data-icon="forwardBlue after">
+                                        <h4>هتل های ساری</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="destination city" id="destination_">
+                                <a href="#" data-q="ارومیه">
+                                    <div class="destination_thumb" style="background-image:url('/images/cities/urum-1.jpg')" title="رزرو هتل ارومیه - لیست هتل های شهر ارومیه"></div>
+                                    <div class="destination_cta" data-icon="forwardBlue after">
+                                        <h4>هتل های ارومیه</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="destination city" id="destination_">
+                                <a href="#" data-q="اردبیل">
+                                    <div class="destination_thumb" style="background-image:url('/images/cities/ardabil-1.jpg')" title="رزرو هتل اردبیل - لیست هتل های شهر اردبیل"></div>
+                                    <div class="destination_cta" data-icon="forwardBlue after">
+                                        <h4>هتل های اردبیل</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="destination city" id="destination_">
+                                <a href="#" data-q="زنجان">
+                                    <div class="destination_thumb" style="background-image:url('/images/cities/zanjan-1.jpg')" title="رزرو هتل زنجان - لیست هتل های شهر زنجان"></div>
+                                    <div class="destination_cta" data-icon="forwardBlue after">
+                                        <h4>هتل های زنجان</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="destination city" id="destination_">
+                                <a href="#" data-q="رشت">
+                                    <div class="destination_thumb" style="background-image:url('/images/cities/rasht-1.jpg')" title="رزرو هتل رشت - لیست هتل های شهر رشت"></div>
+                                    <div class="destination_cta" data-icon="forwardBlue after">
+                                        <h4>هتل های رشت</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="destination city" id="destination_">
+                                <a href="#" data-q="کرمانشاه">
+                                    <div class="destination_thumb" style="background-image:url('/images/cities/kermanshah-1.jpg')" title="رزرو هتل کرمانشاه - لیست هتل های شهر کرمانشاه"></div>
+                                    <div class="destination_cta" data-icon="forwardBlue after">
+                                        <h4>هتل های کرمانشاه</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="destination city" id="destination_">
+                                <a href="#" data-q="بروجرد">
+                                    <div class="destination_thumb" style="background-image:url('/images/cities/brujerd-1.jpg')" title="رزرو هتل بروجرد - لیست هتل های شهر بروجرد"></div>
+                                    <div class="destination_cta" data-icon="forwardBlue after">
+                                        <h4>هتل های بروجرد</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="destination city" id="destination_">
+                                <a href="#" data-q="چابهار">
+                                    <div class="destination_thumb" style="background-image:url('/images/cities/chabahar-1.jpg')" title="رزرو هتل چابهار - لیست هتل های شهر چابهار"></div>
+                                    <div class="destination_cta" data-icon="forwardBlue after">
+                                        <h4>هتل های چابهار</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="destination city" id="destination_">
+                                <a href="#" data-q="رامسر">
+                                    <div class="destination_thumb" style="background-image:url('/images/cities/ramsar-1.jpg')" title="رزرو هتل رامسر - لیست هتل های شهر رامسر"></div>
+                                    <div class="destination_cta" data-icon="forwardBlue after">
+                                        <h4>هتل های رامسر</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="destination city" id="destination_">
+                                <a href="#" data-q="چالوس">
+                                    <div class="destination_thumb" style="background-image:url('/images/cities/chaloos-1.jpg')" title="رزرو هتل چالوس - لیست هتل های شهر چالوس"></div>
+                                    <div class="destination_cta" data-icon="forwardBlue after">
+                                        <h4>هتل های چالوس</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="destination city" id="destination_">
+                                <a href="#" data-q="شهرکرد">
+                                    <div class="destination_thumb" style="background-image:url('/images/cities/shahrkord-1.jpg')" title="رزرو هتل شهرکرد - لیست هتل های شهر شهرکرد"></div>
+                                    <div class="destination_cta" data-icon="forwardBlue after">
+                                        <h4>هتل های شهرکرد</h4>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-                <!-- END  -->
-                <!--  body -->
-                <%- include footer.ejs %>
-                    <div class=" legal-info">
-                        <p id="copyright" class="asian-lang-font-reset">
-                            <span> jootrip.com &copy; 2018-2018</span>
-                        </p>
-                    </div>
+            </div>
+            <!-- END  -->
+            <!--  body -->
+            <%- include footer.ejs %>
+                <div class=" legal-info">
+                    <p id="copyright" class="asian-lang-font-reset">
+                        <span> jootrip.com &copy; 2018-2018</span>
+                    </p>
+                </div>
 
-                    <div class="autocomplete-suggestions" style="position: absolute; z-index: 999">
-                    </div>
+                <div class="autocomplete-suggestions" style="position: absolute; z-index: 999">
+                </div>
 
-                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-                    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-                    <script src="/Plugins/dateRangePicker/js/moment.min.js"></script>
-                    <script src="/Plugins/dateRangePicker/js/moment-jalaali.js"></script>
-                    <script src="/Plugins/dateRangePicker/js/daterangepicker-fa-ex.js"></script>
-                    <script src="/javascripts/common.min.js"></script>
-                    <script src="/javascripts/cities.min.js"></script>
-        </div>
-    </body>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+                <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+                <script src="/Plugins/dateRangePicker/js/moment.min.js"></script>
+                <script src="/Plugins/dateRangePicker/js/moment-jalaali.js"></script>
+                <script src="/Plugins/dateRangePicker/js/daterangepicker-fa-ex.js"></script>
+                <script src="/javascripts/common.min.js"></script>
+                <script src="/javascripts/cities.min.js"></script>
+    </div>
+</body>
 
 </html>

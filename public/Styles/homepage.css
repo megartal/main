@@ -686,7 +686,7 @@ input::-ms-clear {
 @media screen and (min-width:500px) {
     #confidence.provider-logos li {
         margin: 0 2% 2% 0;
-        width: 32%
+        width: 28%
     }
     #confidence.provider-logos li:nth-child(2n) {
         margin-left: 2%

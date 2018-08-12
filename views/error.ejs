@@ -1,59 +1,84 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="fa" prefix="og: http://ogp.me/ns#">
 
-<head profile="http://gmpg.org/xfn/11">
+<header>
     <link rel="stylesheet" href="/Styles/error.css">
-    <header>
-        <%- include header.ejs %>
-    </header>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123350658-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-    <body dir="rtl" id="category-hotels" class="lang-en page-hotelsesi action-hotelsindex   default-layout scaffold-font-size   spring-clean month-view-spring-clean ">
-        <div id="not-found-root">
+        gtag('config', 'UA-123350658-1');
+    </script>
+    <meta charset="utf-8">
+    <meta name="viewport"="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible"="IE=10" />
+    <meta http-equiv="-Language"="fa" />
+    <meta name="theme-color"="#ffffff" />
+    <meta name="msapplication-TileColor"="#21c4d9" />
+    <script>window['start-time'] = new Date().getTime();</script>
+    <link href="/Plugins/dateRangePicker/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="/Plugins/dateRangePicker/css/daterangepicker.css" rel="stylesheet" />
+    <link href="/Plugins/dateRangePicker/css/datepicker-theme.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="/Styles/core.css" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!-- media queries css -->
+    <link id="cssRTL" rel="stylesheet" href="/Styles/search-results.css">
+    <link rel="stylesheet" href="/Styles/search-controls.css">
+    <link rel="stylesheet" href="/Styles/main.css">
+    <link href="/Styles/homepage.css" rel="stylesheet" />
+    <link href="/Styles/destinations.css" rel="stylesheet" />
+    <link href="/Styles/custom.css" rel="stylesheet" />
+</header>
 
-            <div class="NotFound">
-                <div class="bpk-grid__container-1ZChf NotFound__container">
-                    <div class="bpk-grid__row-m2JW4">
-                        <div class="bpk-grid__column-1-92G bpk-grid__column--12-3dJQz">
-                            <header class="Header">
-                                <img src="/images/logo/jootrip.jpg" alt="جوتریپ">
-                                <span class="Header__hidden-text">jootrip | جوتریپ</span>
-                            </header>
-                        </div>
+<body dir="rtl" id="category-hotels" class="lang-en page-hotelsesi action-hotelsindex   default-layout scaffold-font-size   spring-clean month-view-spring-clean ">
+    <div id="not-found-root">
+
+        <div class="NotFound">
+            <div class="bpk-grid__container-1ZChf NotFound__container">
+                <div class="bpk-grid__row-m2JW4">
+                    <div class="bpk-grid__column-1-92G bpk-grid__column--12-3dJQz">
+                        <header class="Header">
+                            <img src="/images/logo/jootrip.jpg" alt="جوتریپ">
+                            <span class="Header__hidden-text">jootrip | جوتریپ</span>
+                        </header>
                     </div>
-                    <div class="bpk-grid__row-m2JW4 NotFound__wrapper">
-                        <div class="bpk-grid__column-1-92G bpk-grid__column--12-3dJQz">
-                            <section class="NotFound__content">
-                                <div class="NotFound__img">
-                                    <img alt="Page not found." src="/images/logo/error.svg"
-                                        class="PageNotFoundImage">
-                                </div>
-                                <div class="NotFound__title">صفحه مورد نظر شما پیدا نشد!</div>
-                                <!-- <div class="NotFound__message"></div> -->
-                            </section>
-                        </div>
+                </div>
+                <div class="bpk-grid__row-m2JW4 NotFound__wrapper">
+                    <div class="bpk-grid__column-1-92G bpk-grid__column--12-3dJQz">
+                        <section class="NotFound__content">
+                            <div class="NotFound__img">
+                                <img alt="Page not found." src="/images/logo/error.svg" class="PageNotFoundImage">
+                            </div>
+                            <div class="NotFound__title">صفحه مورد نظر شما پیدا نشد!</div>
+                            <!-- <div class="NotFound__message"></div> -->
+                        </section>
                     </div>
-                    <div class="bpk-grid__row-m2JW4">
-                        <div class="bpk-grid__column-1-92G bpk-grid__column--12-3dJQz NotFound__button">
-                            <a href="/" class="bpk-button-8imDo">بازگشت به صفحه اصلی
-                            </a>
-                        </div>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
+                </div>
+                <div class="bpk-grid__row-m2JW4">
+                    <div class="bpk-grid__column-1-92G bpk-grid__column--12-3dJQz NotFound__button">
+                        <a href="/" class="bpk-button-8imDo">بازگشت به صفحه اصلی
+                        </a>
                     </div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
                 </div>
             </div>
         </div>
-        <%- include footer.ejs %>
-            <div class=" legal-info">
-                <p id="copyright" class="asian-lang-font-reset">
-                    <span> jootrip.com &copy; 2018-2018</span>
-                </p>
-            </div>
-            </div>
-    </body>
+    </div>
+    <%- include footer.ejs %>
+        <div class=" legal-info">
+            <p id="copyright" class="asian-lang-font-reset">
+                <span> jootrip.com &copy; 2018-2018</span>
+            </p>
+        </div>
+        </div>
+</body>
 
 </html>
