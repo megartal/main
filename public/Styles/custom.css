@@ -172,3 +172,33 @@ h1 {
     margin-left: 20% !important;
     margin-right: 20% !important;
 }
+
+.homepage .logo{
+    position: absolute;
+    z-index: 5;
+    margin-top: 0 !important;
+    padding: .75rem!important;
+}
+@media only screen and (min-width: 768px) {
+    .hotel-search-form-wrapper{
+        background-image:url('/images/background/testpic (17).jpg');
+        background-position:center;
+        background-size:cover
+    }
+    .hotel-search-form-header{
+        background-color: #4f5f79ad;
+        margin-bottom: 2rem!important;
+    }
+}
+.homepage .hotel-search-form-wrapper.springClean{
+    overflow: hidden;
+}
+.hotel-search-form-header{
+    padding: 10px;
+    width: 100%;
+    margin: 5rem 0 0;
+    text-align: center;
+}
+.hotel-search-form-header h1.white-text{
+    text-align: center!important;
+}

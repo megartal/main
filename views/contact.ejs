@@ -1,55 +1,20 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="fa" prefix="og: http://ogp.me/ns#">
+<%- include parts/html.ejs %>
+<head>
+    <%- include parts/ga.ejs %>
+    <%- include parts/meta_tags.ejs %>
+    <%- include parts/css_links.ejs %>
 
-<header>
     <title>تماس با ما | جوتریپ</title>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123350658-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'UA-123350658-1');
-    </script>
-    <meta charset="utf-8">
-    <meta name="viewport"="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no" />
-    <meta http-equiv="X-UA-Compatible"="IE=10" />
-    <meta http-equiv="-Language"="fa" />
-    <meta name="theme-color"="#ffffff" />
-    <meta name="msapplication-TileColor"="#21c4d9" />
-    <script>window['start-time'] = new Date().getTime();</script>
-    <link href="/Plugins/dateRangePicker/bootstrap/bootstrap.min.css" rel="stylesheet" />
-    <link href="/Plugins/dateRangePicker/css/daterangepicker.css" rel="stylesheet" />
-    <link href="/Plugins/dateRangePicker/css/datepicker-theme.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="/Styles/core.css" />
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <!-- media queries css -->
-    <link id="cssRTL" rel="stylesheet" href="/Styles/search-results.css">
-    <link rel="stylesheet" href="/Styles/search-controls.css">
-    <link rel="stylesheet" href="/Styles/main.css">
-    <link href="/Styles/homepage.css" rel="stylesheet" />
-    <link href="/Styles/destinations.css" rel="stylesheet" />
-    <link href="/Styles/custom.css" rel="stylesheet" />
-</header>
+    <meta name="description" content="جوتریپ یک موتور جستجو هست که برای شما ارزانترین هتل را در بین سایتهای رزرواسیون هتل پیدا میکند.">
+</head>
 
 <body dir="rtl" id="category-hotels" class="lang-en page-hotelsesi action-hotelsindex   default-layout scaffold-font-size   spring-clean month-view-spring-clean ">
     <div id="position-fixer"></div>
-    <noscript>
-        <div class="no-js-msg">
-            <p>
-                jootrip needs JavaScript to work. It looks like your browser doesn't support JavaScript, or has it turned off. Please try
-                again with JavaScript support.
-            </p>
-        </div>
-    </noscript>
+    <%- include parts/noscript.ejs %>
     <div id="pagewrap" class="clearfix">
 
-        <%- include navbar.ejs %>
+        <%- include parts/navbar.ejs %>
 
-            <!--  body -->
-
-            <!-- START  -->
             <main class="wrap content article" style="width: 1048px">
                 <article class="article">
                     <header class="single-post__header">
@@ -71,13 +36,8 @@
     </div>
     <!-- END  -->
     <!--  body -->
-    <%- include footer.ejs %>
-        <div class=" legal-info">
-            <p id="copyright" class="asian-lang-font-reset">
-                <span> jootrip.com &copy; 2018-2018</span>
-            </p>
-        </div>
-        </div>
+    <%- include parts/footer.ejs %>
+    <%- include parts/legal_info.ejs %>
 </body>
 
 </html>

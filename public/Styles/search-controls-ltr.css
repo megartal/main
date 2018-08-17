@@ -2163,7 +2163,7 @@ body.lang-tr #search-form button[type=button].wc-button {
 @media only screen and (min-width:480px) {
     .hotel-search-form-header {
         display: block;
-        width: 1048px
+        /*width: 1048px*/
     }
     .hotel-search-form-header h2 {
         margin-top: 0;
