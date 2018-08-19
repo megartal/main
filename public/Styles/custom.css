@@ -180,13 +180,13 @@ h1 {
     padding: .75rem!important;
 }
 @media only screen and (min-width: 768px) {
-    .hotel-search-form-wrapper{
+    .homepage .hotel-search-form-wrapper{
         background-image:url('/images/background/testpic (17).jpg');
         background-position:center;
         background-size:cover
     }
     .hotel-search-form-header{
-        background-color: #4f5f79ad;
+        background-color: #29436da6;
         margin-bottom: 2rem!important;
     }
 }
