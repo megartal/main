@@ -1,6 +1,6 @@
 var i = 0;
-// var base_url = "http://localhost:4000";
-var base_url = "";
+var base_url = "https://www.jootrip.com";
+// var base_url = "";
 $(document).ready(function () {
     var q = '', city = '', star = 0, accomType = 'hotel', flag = true, range = 0, page = 1;
     datePicker();
@@ -226,6 +226,7 @@ $(document).ready(function () {
         search();
     });
 
+    var hotel_results;
     //search method
     function search(type, value) {
         if (q == '')
@@ -249,6 +250,7 @@ $(document).ready(function () {
                     var dealTemplate = $('#dealId').html();
                     var otaTemplate = $('#OTAId').html();
                     populateChangedData(data);
+                    hotel_results = data.hotel_result;
                     $('#results').children().remove();
                     data.hotel_result.forEach(function (element) {
                         var cardhtml = Mustache.render(template, element);
@@ -264,13 +266,11 @@ $(document).ready(function () {
                             $(hotelId + 'stars').append('<span style="font-size:100%;color:Orange;">&starf;</span>');
                         }
                         $(hotelId).append(dealHtml);
-                        element.ota_results.forEach(function (ota) {
+                        element.ota_results.forEach(function (ota, index) {
                             ota.hotel_id = element.hotel_id;
+                            ota.index = index;
                             var otaHtml = Mustache.render(otaTemplate, ota);
                             $(hotelId + 'ota').append(otaHtml);
-                            ota.price_info.rooms.forEach(function (room) {
-                                $(hotelId + ota.ota.id).append('<div class="room_type">'+ ''+ room.num +' اتاق "'+room.name +'"' +'</div>')
-                            });
                         });
                     });
                 } else {
@@ -283,25 +283,33 @@ $(document).ready(function () {
         });
     }
 
-    // //redirect
-    // $('body').on('click', '.hotel-deal-item-link', function () {
-    //     var template = $('#redirectModal').html();
-    //     var url = $(this).attr('data-url');
-    //     var logo = $(this).find('.partner-logo').css('background-image');
-    //     var html = Mustache.render(template, { logo: logo });
-    //     $('#redirectModalContent').append(html);
-    //     $('#redirectModalContent').css('display', 'block');
-    //     $('#redirectURL').attr('href', url);
-    //     setTimeout(function () {
-    //         $('#redirectURL')[0].click()
-    //     }, 4000);
-    // });
+    //redirect
+    $('body').on('click', '.hotel-cta-main', function () {
+        var hotelId = $(this).attr('hid');
+        var otaIndex = $(this).attr('oid');
+        var hotelInfo = hotel_results.find(function(h) { return h.hotel_id === hotelId});
 
-    // //new search
-    // $('body').on('click', '#new_search', function(){
-    //     $('#redirectModalContent').children().remove();
-    //     $('#redirectModalContent').css('display', 'none');
-    // });
+        $(".mainRedirector").attr('href',hotelInfo.redirect);
+        var info = hotelInfo.ota_results[otaIndex||0];
+        $(".roomsToReserve").html();
+        info.price_info.rooms.forEach(function (room) {
+            $(".roomsToReserve").append('<div class="room_type">'+ ''+ room.num +' اتاق "'+room.name +'"' +'</div>')
+        });
+        // var logo = $(this).find('.partner-logo').css('background-image');
+        $("#provider-logo-span").css('background-image', 'url(/images/logo/' + info.ota.logo+')');
+
+        $('#redirectModal').css('display', 'block');
+        // $('#redirectURL').attr('href', url);
+        // setTimeout(function () {
+        //     $('#redirectURL')[0].click()
+        // }, 4000);
+    });
+
+    //new search
+    $('body').on('click', '#new_search', function(){
+        // $('#redirectModalContent').children().remove();
+        $('#redirectModal').css('display', 'none');
+    });
 
     //populate data on new search 
     function populateChangedData(data) {

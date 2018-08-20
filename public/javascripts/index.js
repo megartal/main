@@ -11,11 +11,11 @@ $(document).ready(function () {
     });
 });
 
-$("form").submit(function (e) {
-    if ($('#q').val() == '') {
-        $('#q').attr('value', $.find('a[data-q]').attr('data-q'));
-    }
-});
+// $("form").submit(function (e) {
+//     if ($('#q').val() == '') {
+//         $('#q').attr('value', $.find('a[data-q]').attr('data-q'));
+//     }
+// });
 
 
 

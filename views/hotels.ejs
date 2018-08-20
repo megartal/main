@@ -200,38 +200,43 @@
                 </div> -->
 
     </div>
+    <div id="redirectModal" class="modal">
+        <div class="modal-content">
+            <!--<h3>به زودی به سایت مورد نظر منتقل خواهید شد...</h3>-->
+            <section id="confidence" class="provider-logos redirect">
+                <div class="confidence-wrapper">
+                    <ol class="clearfix">
+                        <li class="provider-logo">
+                            <span id="provider-logo-span"></span>
+                        </li>
+                        <li class="provider-logo">
+                            <span style="background-image: url(/images/logo/progress.gif);"></span>
+                        </li>
+                        <li class="provider-logo">
+                            <span style="background-image: url(/images/logo/jootrip.jpg);"></span>
+                        </li>
+
+                    </ol>
+                </div>
+            </section>
+            <br>
+            <h3>در سایت مورد نظر اتاق های زیر را رزرو کنید:</h3>
+            <h4 class="roomsToReserve"></h4>
+            <br>
+            <br>
+            <div class="leave-stay-container">
+                <button id="new_search" type="submit" class="">ادامه جستجو</button>
+                <a href="" class="hotel-cta-main-lg mainRedirector" id="redirectURL" target="_blank">انتقال به سایت اصلی</a>
+            </div>
+
+        </div>
+    </div>
 
     <% include parts/scripts.ejs%>
-    <script src="/javascripts/common.min.js"></script>
-    <script src="/javascripts/hotels.min.js"></script>
-
-    <script id="redirectModal" type="text/template">
-        <div class="modal-content">
-                <h3>به زودی به سایت مورد نظر منتقل خواهید شد...</h3>
-                <br>
-                <section id="confidence" class="provider-logos redirect">
-                    <div class="confidence-wrapper">
-                        <ol class="clearfix">
-                            <li class="provider-logo">
-                                <span style="background-image: {{logo}};"></span>
-                            </li>
-                            <li class="provider-logo">
-                                <span style="background-image: url(/images/logo/progress.gif);"></span>
-                            </li>
-                            <li class="provider-logo">
-                                <span style="background-image: url(/images/logo/jootrip.jpg);"></span>
-                            </li>
-
-                        </ol>
-                    </div>
-                </section>
-                <br>
-                <p>در سایت مورد نظر اتاق های زیر را رزرو کنید:</p>
-                <a href="" id="redirectURL" target="_blank">انتقال به سایت اصلی</a>
-                <div class="field submit"></div>
-                <button id="new_search" type="submit" style="margin-right: 70%" class="hotel-cta-main-lg">ادامه جستجو</button>
-            </div>
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
+    <script src="/javascripts/common.js"></script>
+    <script src="/javascripts/hotels.js"></script>
     <script id="cartId" type="text/template">
                         <li class="hotel-card cpa-hotel-card clearfix" id="{{hotel_id}}">
                             <div class="cpa__hotel-card__container">
@@ -387,15 +392,12 @@
                         </div>
                     </script>
     <script id="OTAId" type="text/template">
-                        <a href="{{redirect}}" target="_blank" class="hotel-deal-item-link highlight_official">
+                        <div class="hotel-deal-item-link highlight_official">
                             <div class="hotel-deal-item">
                                 <div class="room_column">
                                     <div class="deal_meta partner_meta">
                                         <div class="partner partner-logo" style="background-image:url(/images/logo/{{ota.logo}});"></div>
                                         <div class="partner partner-usp">وب سایت</div>
-                                    </div>
-                                    <div id="{{hotel_id}}{{ota.id}}" class="deal_meta room_meta">
-
                                     </div>
                                 </div>
                                 <div class="hotel-deal-price price_column ">
@@ -409,12 +411,12 @@
                                             164 ریال
                                         </span>
                                     </div>
-                                    <div class="deal_meta cta_meta">
-                                        <button class="hotel-cta-main" type="button">انتقال به سایت اصلی</button>
+                                    <div class="deal_meta cta_meta" >
+                                        <button hid="{{hotel_id}}" oid="{{ota.index}}" class="hotel-cta-main" type="button">انتقال به سایت اصلی</button>
                                     </div>
                                 </div>
                             </div>
-                        </a>
+                        </div>
                     </script>
     <script id="locationId" type="text/template">
                         <a id="btn-map">
