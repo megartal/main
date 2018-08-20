@@ -1,29 +1,45 @@
-<div id="header-root" style="font-family: 'B Yekan'">
-    <header class="Header-1_1R8">
-        <div class="Header__wrapper-2KwQq clearfix wrap my-navbar">
-            <nav class="SecondaryNav-3MUje">
-                <ul class="SecondaryNav__list-1lEyp">
-                    <li class="SecondaryNav__help-19EmT SecondaryNav__item-25SJ- SecondaryNav__item--small-_0Qtf">
-                        <a class="bpk-link-143_C" href="/cities" target="_blank">شهرها</a>
-                    </li>
-                    <li class="SecondaryNav__help-19EmT SecondaryNav__item-25SJ- SecondaryNav__item--small-_0Qtf">
-                        <a class="bpk-link-143_C" href="/help" target="_blank">راهنما</a>
-                    </li>
-                    <li class="SecondaryNav__help-19EmT SecondaryNav__item-25SJ- SecondaryNav__item--small-_0Qtf">
-                        <a class="bpk-link-143_C" href="/about" target="_blank">درباره ما</a>
-                    </li>
-                    <li class="SecondaryNav__menu-393l9 toggle-touch-menu SecondaryNav__item-25SJ-" id="toggle-touch-menu">
-                        <div>
-                            <button class="TouchMenu__button-5XDtn">
-                                <img src="/images/logo/jootrip.jpg" alt="جوتریپ" width="150em" height="100em" />
-                            </button>
-                        </div>
-                    </li>
-                </ul>
-            </nav>
-            <% include logo.ejs%>
-            <nav id="PrimaryNav" class="PrimaryNav-2IMAs">
-            </nav>
-        </div>
-    </header>
-</div>
+<!--<div id="header-root" style="font-family: 'B Yekan'">-->
+    <!--<header class="Header-1_1R8">-->
+        <!--<div class="Header__wrapper-2KwQq clearfix wrap my-navbar">-->
+            <!--<nav class="SecondaryNav-3MUje">-->
+                <!--<ul class="SecondaryNav__list-1lEyp">-->
+                    <!--<li class="SecondaryNav__help-19EmT SecondaryNav__item-25SJ- SecondaryNav__item&#45;&#45;small-_0Qtf">-->
+                        <!--<a class="bpk-link-143_C" href="/cities" target="_blank">شهرها</a>-->
+                    <!--</li>-->
+                    <!--<li class="SecondaryNav__help-19EmT SecondaryNav__item-25SJ- SecondaryNav__item&#45;&#45;small-_0Qtf">-->
+                        <!--<a class="bpk-link-143_C" href="/help" target="_blank">راهنما</a>-->
+                    <!--</li>-->
+                    <!--<li class="SecondaryNav__help-19EmT SecondaryNav__item-25SJ- SecondaryNav__item&#45;&#45;small-_0Qtf">-->
+                        <!--<a class="bpk-link-143_C" href="/about" target="_blank">درباره ما</a>-->
+                    <!--</li>-->
+                    <!--&lt;!&ndash;<li class="SecondaryNav__menu-393l9 toggle-touch-menu SecondaryNav__item-25SJ-" id="toggle-touch-menu">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<div>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<button class="TouchMenu__button-5XDtn">&ndash;&gt;-->
+                                <!--&lt;!&ndash;<img src="/images/logo/jootrip.jpg" alt="جوتریپ" width="150em" height="100em" />&ndash;&gt;-->
+                            <!--&lt;!&ndash;</button>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</li>&ndash;&gt;-->
+                <!--</ul>-->
+            <!--</nav>-->
+
+            <!--<nav id="PrimaryNav" class="PrimaryNav-2IMAs">-->
+            <!--</nav>-->
+        <!--</div>-->
+    <!--</header>-->
+<!--</div>-->
+<header>
+    <div class="navbar-container">
+        <% include logo.ejs%>
+        <ul class="navs">
+            <li>
+                <a href="/cities" target="_blank">شهرها</a>
+            </li>
+            <li>
+                <a href="/help" target="_blank">راهنما</a>
+            </li>
+            <li>
+                <a href="/about" target="_blank">درباره ما</a>
+            </li>
+        </ul>
+    </div>
+</header>

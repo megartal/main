@@ -76,6 +76,10 @@ body {
         clear: none;
         padding-top: 6rem;
     }
+    .springClean .hotel-criteria-header{
+        display: flex;
+        line-height: 2.25rem;
+    }
 }
 .results-extra{
     float:right
@@ -109,6 +113,9 @@ body {
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
+#confidence.provider-logos{
+    width: auto;
+}
 #confidence.provider-logos li{
     margin: 0 0.5rem!important;
 }
@@ -137,7 +144,11 @@ body {
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    /*width: 80%; !* Could be more or less, depending on screen size *!*/
+}
+.confidence-wrapper ol.clearfix{
+    display: flex;
+    justify-content: center;
 }
 
 .alert {
@@ -190,8 +201,8 @@ h1 {
 }
 
 .redirect{
-    margin-left: 20% !important;
-    margin-right: 20% !important;
+    /*margin-left: 20% !important;*/
+    /*margin-right: 20% !important;*/
 }
 
 .homepage .logo{
@@ -200,7 +211,47 @@ h1 {
     margin-top: 0 !important;
     padding: .75rem!important;
 }
+header{
+
+}
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+}
+.navbar-container .navs{
+    padding: 1rem 0 0 1rem;
+    margin: 0;
+}
+.navbar-container .navs li{
+    list-style: none;
+    display: inline;
+    margin: 7px;
+}
+.results-extra {
+    display: none;
+}
+.hotel-deals .deal_meta{
+    margin: auto .375rem auto auto ;!important;
+}
+html{
+    font-size: 14px;
+}
+@media only screen and (min-width: 500px) {
+    .navbar-container{
+        width: 95%;
+        margin: auto;
+    }
+    html {
+        font-size: 16px;
+    }
+    .modal-content{
+        width: 80%;
+    }
+}
 @media only screen and (min-width: 768px) {
+    .results-extra {
+        display: block;
+    }
     .homepage .hotel-search-form-wrapper{
         background-image:url('/images/background/testpic (17).jpg');
         background-position:center;

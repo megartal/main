@@ -289,8 +289,9 @@ $(document).ready(function () {
         var otaIndex = $(this).attr('oid');
         var hotelInfo = hotel_results.find(function(h) { return h.hotel_id === hotelId});
 
-        $(".mainRedirector").attr('href',hotelInfo.redirect);
+
         var info = hotelInfo.ota_results[otaIndex||0];
+        $(".mainRedirector").attr('href', info.redirect);
         $(".roomsToReserve").html();
         info.price_info.rooms.forEach(function (room) {
             $(".roomsToReserve").append('<div class="room_type">'+ ''+ room.num +' اتاق "'+room.name +'"' +'</div>')
