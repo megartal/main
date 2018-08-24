@@ -22,6 +22,19 @@ $(document).ready(function () {
             $(hotelId).css('display', 'none');
         }
     });
+    $('#btn-filter').on('click', function() {
+        $('.results-extra ').show();
+        $('.results-list-wrapper ').hide();
+    });
+    $('#btn-filter-apply').on('click', function() {
+        $('.results-extra ').hide();
+        $('.results-list-wrapper ').show();
+    });
+    $('#btn-filter-cancel').on('click', function() {
+        $('.results-extra ').hide();
+        $('.results-list-wrapper ').show();
+
+    });
 
     $('#results').on('click', '.cpa-hotel-inline-hide-details', function () {
         $('.cpa__hotel-card__main-cta').trigger('click');
@@ -292,7 +305,7 @@ $(document).ready(function () {
 
         var info = hotelInfo.ota_results[otaIndex||0];
         $(".mainRedirector").attr('href', info.redirect);
-        $(".roomsToReserve").html();
+        $(".roomsToReserve").html('');
         info.price_info.rooms.forEach(function (room) {
             $(".roomsToReserve").append('<div class="room_type">'+ ''+ room.num +' اتاق "'+room.name +'"' +'</div>')
         });

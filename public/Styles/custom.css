@@ -186,9 +186,11 @@ body {
 
 .article {
     font-size: 1rem !important;
-    padding: 120px !important;
+    padding: 10px !important;
     text-align: justify !important;
     line-height: 40px !important;
+    max-width: 800px;
+    margin: auto;
 }
 
 h1 {
@@ -230,6 +232,13 @@ header{
 .results-extra {
     display: none;
 }
+.springClean .hotel-criteria-header .hotel-cta-secondary:before {
+    margin-left: 4px;
+}
+#filter.listing{
+    background: white;
+    position: static;
+}
 .hotel-deals .deal_meta{
     margin: auto .375rem auto auto ;!important;
 }
@@ -248,7 +257,16 @@ html{
         width: 80%;
     }
 }
+#filter .expanded.long_list:after{
+    display: none;
+}
 @media only screen and (min-width: 768px) {
+    #filter #filter-inner{
+        padding: 0 10px;
+    }
+    .results-list-wrapper {
+        display: block !important;
+    }
     .results-extra {
         display: block;
     }
