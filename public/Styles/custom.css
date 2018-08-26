@@ -84,6 +84,14 @@ body {
 .results-extra{
     float:right
 }
+.small-hide {
+    display: none;
+}
+@media only screen and (min-width: 768px) {
+    .small-hide{
+        display: block;
+    }
+}
 .page-hotelsesi #content-wrap.wrap {
     width: auto;
     background-color: #dfdce3;
@@ -229,9 +237,6 @@ header{
     display: inline;
     margin: 7px;
 }
-.results-extra {
-    display: none;
-}
 .springClean .hotel-criteria-header .hotel-cta-secondary:before {
     margin-left: 4px;
 }
@@ -267,9 +272,6 @@ html{
     .results-list-wrapper {
         display: block !important;
     }
-    .results-extra {
-        display: block;
-    }
     .homepage .hotel-search-form-wrapper{
         background-image:url('/images/background/testpic (17).jpg');
         background-position:center;
@@ -279,6 +281,12 @@ html{
         background-color: #29436da6;
         margin-bottom: 2rem!important;
     }
+}
+#sort{
+    width: 14rem!important;
+}
+#sort.listing ol {
+    width: 100%!important;
 }
 .homepage .hotel-search-form-wrapper.springClean{
     overflow: hidden;

@@ -22,18 +22,29 @@ $(document).ready(function () {
             $(hotelId).css('display', 'none');
         }
     });
+
+    $('#sort li').on('click', function() {
+        $('#sort li').removeClass('selected');
+        $(this).addClass('selected');
+        $('#sort.listing').addClass('hidden');
+        var value = $('input.sort-control', $(this)).val()
+        $('#hotel-sort').val(value);
+        search()
+    });
+    $('#btn-sort').on('click', function() {
+        $('#sort.listing').removeClass('hidden');
+    });
     $('#btn-filter').on('click', function() {
-        $('.results-extra ').show();
-        $('.results-list-wrapper ').hide();
+        $('.results-extra').removeClass('small-hide');
+        $('.results-list-wrapper').addClass('small-hide');
     });
     $('#btn-filter-apply').on('click', function() {
-        $('.results-extra ').hide();
-        $('.results-list-wrapper ').show();
+        $('.results-extra').addClass('small-hide');
+        $('.results-list-wrapper').removeClass('small-hide');
     });
     $('#btn-filter-cancel').on('click', function() {
-        $('.results-extra ').hide();
-        $('.results-list-wrapper ').show();
-
+        $('.results-extra').addClass('small-hide');
+        $('.results-list-wrapper').removeClass('small-hide');
     });
 
     $('#results').on('click', '.cpa-hotel-inline-hide-details', function () {
