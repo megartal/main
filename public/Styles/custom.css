@@ -285,6 +285,23 @@ html{
 #sort{
     width: 14rem!important;
 }
+.ui-datepicker-rtl{
+    z-index: 3;
+    padding: 0 16px 10px!important;
+    width: 290px!important;
+}
+.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next{
+    padding: 2px!important;
+}
+.ui-datepicker .ui-datepicker-header {
+    background: none;
+    border: none;
+    border-bottom: 1px solid #eee;
+}
+.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next{
+    top: 16px!important;
+}
+
 #sort.listing ol {
     width: 100%!important;
 }

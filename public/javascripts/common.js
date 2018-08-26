@@ -2,7 +2,7 @@ var qChanged = false;
 var qSelected = false;
 var city = '';
 // var base_url = "http://localhost:4000"
-var base_url = "";
+var base_url = "https://www.jootrip.com";
 //mouse over on auto complete
 $('body').on('mouseenter', '.autocomplete-suggestion', function () {
     $(this).css("background-color", "#e4e6e8");
@@ -88,31 +88,42 @@ function datePicker() {
     var dateFrom = false ? moment("") : undefined;
     var dateTo = false ? moment("") : undefined;
     var $dateRanger = $("#dateRangePicker");
-
-    $dateRanger.daterangepicker({
-        clearLabel: 'Clear',
-        autoUpdateInput: !!(dateFrom && dateTo),
-        minDate: moment(),
-        maxDate: moment().add(30, 'days'),
-        autoApply: true,
-        opens: isRtl ? 'left' : 'right',
-        locale: {
-            separator: ' - ',
-            format: dateFormat
-        },
-        startDate: dateFrom,
-        endDate: dateTo,
-        jalaali: isRtl,
-        showDropdowns: true
-    }).on('apply.daterangepicker', function (ev, picker) {
-        night = picker.endDate.diff(picker.startDate, 'days');
-        if (night > 0) {
-            $(this).val(picker.startDate.format(dateFormat));
-            $('#dateRangePickerEnd').val(picker.endDate.format(dateFormat));
-        } else {
-            $(this).val('')
-        }
+    var $dateRangerEnd = $("#dateRangePickerEnd");
+    $dateRanger.datepicker({
+        dateFormat: "yy/m/d",
+        minDate: 1,
+        maxDate: "+14D"
     });
+    $dateRangerEnd.datepicker({
+        dateFormat: "yy/m/d",
+        minDate: 2,
+        maxDate: "+31D"
+    });
+
+    // $dateRanger.daterangepicker({
+    //     clearLabel: 'Clear',
+    //     autoUpdateInput: !!(dateFrom && dateTo),
+    //     minDate: moment(),
+    //     maxDate: moment().add(30, 'days'),
+    //     autoApply: true,
+    //     opens: isRtl ? 'left' : 'right',
+    //     locale: {
+    //         separator: ' - ',
+    //         format: dateFormat
+    //     },
+    //     startDate: dateFrom,
+    //     endDate: dateTo,
+    //     jalaali: isRtl,
+    //     showDropdowns: true
+    // }).on('apply.daterangepicker', function (ev, picker) {
+    //     night = picker.endDate.diff(picker.startDate, 'days');
+    //     if (night > 0) {
+    //         $(this).val(picker.startDate.format(dateFormat));
+    //         $('#dateRangePickerEnd').val(picker.endDate.format(dateFormat));
+    //     } else {
+    //         $(this).val('')
+    //     }
+    // });
 }
 
 //get url params
