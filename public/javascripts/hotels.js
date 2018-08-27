@@ -1,6 +1,7 @@
 var i = 0;
-var base_url = "https://www.jootrip.com";
-// var base_url = "";
+// var base_url = "https://www.jootrip.com";
+// var base_url = "http://localhost:4000"
+var base_url = "";
 $(document).ready(function () {
     var q = '', city = '', star = 0, accomType = 'hotel', flag = true, range = 0, page = 1;
     datePicker();
@@ -165,7 +166,7 @@ $(document).ready(function () {
     //modal new search
     $('#new_search').click(function () {
         $('#myModal').css('display', 'none');
-        location.reload();
+        location.href = "/";
     });
 
     //آیکون جستجوی جدید
@@ -261,11 +262,24 @@ $(document).ready(function () {
         if (param('q') != param('city'))
             $('.partition').css('display', 'block');
 
+        var dateFrom = param('from');
+        if(param('from') == undefined){
+            from = new Date();
+            from.setDate(from.getDate() + 1);
+            dateFrom = moment(from).locale('fa').format('jYYYY/jMM/jDD')
+        }
+        var dateTo = param('to');
+        if(param('to') == undefined){
+            to = new Date();
+            to.setDate(to.getDate() + 2);
+            dateTo = moment(to).locale('fa').format('jYYYY/jMM/jDD')
+        }
+
         $.ajax({
             url: base_url + "/api/search",
             type: 'POST',
             data: {
-                q: q, city: city, from: param('from'), to: param('to'), guest: param('na'), rooms: param('nr'),
+                q: q, city: city, from: dateFrom, to: dateTo, guest: param('na'), rooms: param('nr'),
                 sort: $('#hotel-sort').val(), page: page, star: star, type: accomType, range: range
             },
             success: function (data) {

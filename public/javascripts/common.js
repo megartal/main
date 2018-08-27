@@ -2,7 +2,8 @@ var qChanged = false;
 var qSelected = false;
 var city = '';
 // var base_url = "http://localhost:4000"
-var base_url = "https://www.jootrip.com";
+// var base_url = "https://www.jootrip.com";
+var base_url = ""
 //mouse over on auto complete
 $('body').on('mouseenter', '.autocomplete-suggestion', function () {
     $(this).css("background-color", "#e4e6e8");
@@ -73,9 +74,9 @@ $('#q').keydown(function () {
 // set default date
 function setDefultDate() {
     from = new Date();
-    from.setDate(from.getDate() + 2);
+    from.setDate(from.getDate() + 1);
     to = new Date();
-    to.setDate(to.getDate() + 3);
+    to.setDate(to.getDate() + 2);
     $('#dateRangePicker').val(moment(from).locale('fa').format('jYYYY/jMM/jDD'));
     $('#dateRangePickerEnd').val(moment(to).locale('fa').format('jYYYY/jMM/jDD'));
 }
@@ -90,12 +91,12 @@ function datePicker() {
     var $dateRanger = $("#dateRangePicker");
     var $dateRangerEnd = $("#dateRangePickerEnd");
     $dateRanger.datepicker({
-        dateFormat: "yy/m/d",
+        dateFormat: "yy/mm/d",
         minDate: 1,
-        maxDate: "+14D"
+        maxDate: "+30D"
     });
     $dateRangerEnd.datepicker({
-        dateFormat: "yy/m/d",
+        dateFormat: "yy/mm/d",
         minDate: 2,
         maxDate: "+31D"
     });
