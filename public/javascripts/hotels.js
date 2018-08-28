@@ -164,7 +164,7 @@ $(document).ready(function () {
     });
 
     //modal new search
-    $('#new_search').click(function () {
+    $('#new_search2').click(function () {
         $('#myModal').css('display', 'none');
         location.href = "/";
     });
