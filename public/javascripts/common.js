@@ -73,27 +73,40 @@ $('#q').keydown(function () {
 
 // set default date
 function setDefultDate() {
-    from = new Date();
-    from.setDate(from.getDate() + 1);
-    to = new Date();
-    to.setDate(to.getDate() + 2);
-    $('#dateRangePicker').val(moment(from).locale('fa').format('jYYYY/jMM/jDD'));
-    $('#dateRangePickerEnd').val(moment(to).locale('fa').format('jYYYY/jMM/jDD'));
+    $('#dateRangePicker').val(moment().add(1,'day').locale('fa').format('YYYY/MM/DD'));
+    $('#dateRangePickerEnd').val(moment().add(2, 'day').locale('fa').format('YYYY/MM/DD'));
 }
 
 //date picker
 function datePicker() {
-    var night;
-    var isRtl = true;
-    var dateFormat = isRtl ? 'jYYYY/jMM/jDD' : 'YYYY/MM/DD';
-    var dateFrom = false ? moment("") : undefined;
-    var dateTo = false ? moment("") : undefined;
     var $dateRanger = $("#dateRangePicker");
     var $dateRangerEnd = $("#dateRangePickerEnd");
     $dateRanger.datepicker({
         dateFormat: "yy/mm/d",
         minDate: 1,
         maxDate: "+30D"
+    });
+    $dateRanger.on('change', function (ev) {
+        var startDate = $dateRanger.val();
+        var endDate = $dateRangerEnd.val();
+        // $dateRangerEnd.datepicker('setStartDate', minDate);
+        // $dateRangerEnd.data("DateTimePicker").minDate(minDate)
+        // $dateRangerEnd.val(selectedDate)
+        // $dateRangerEnd.datepicker('remove');
+        // $dateRangerEnd.unbind().removeData();
+        $dateRangerEnd.datepicker('destroy');
+        var mStart = moment.from(startDate, 'fa', 'YYYY/MM/DD');
+        var mEnd = moment.from(endDate, 'fa', 'YYYY/MM/DD')
+        var diff = mStart.diff(moment(), 'days') + 1;
+        mStart.add(1, 'day');
+        if (mEnd.isBefore(mStart)) {
+            $dateRangerEnd.val(mStart.locale('fa').format('YYYY/MM/DD'));
+        }
+        $dateRangerEnd.datepicker({
+            dateFormat: "yy/mm/d",
+            minDate: diff,
+            maxDate: "+31D"
+        });
     });
     $dateRangerEnd.datepicker({
         dateFormat: "yy/mm/d",
